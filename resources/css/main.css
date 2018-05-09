@@ -1,0 +1,323 @@
+/* Enter your CSS here */
+@import url("https://use.typekit.net/lew4tte.css");
+body {
+	font-family: 'century gothic';
+	color: #606060;
+	font-size: 16px;
+}
+body,
+body > #vue-app,
+body > #vue-error,
+.wrapper-main .navbar {
+	background-color: #fff;
+}
+.wrapper-main #page-body {
+	margin-top: 130px;
+}
+h1, h2, footer h4 {
+	font-family: "ff-market-web";
+}
+.clear {
+	clear:both;
+	line-height: 0;
+	height: 0;
+}
+.wrapper-main .navbar {
+	border-bottom: 1px solid #f20008;
+	padding: 30px 0;
+}
+.navbar-brand img {
+    max-height: none;
+    width: 225px;
+}
+.anicon {
+	width: 100px;
+}
+#mainNavbarCollapsable ul.mainmenu > li.ddown > a {
+    text-transform: uppercase;
+    color: #606060;
+    padding: 1.7rem 1rem;
+    font-size: 15px;
+}
+/* Header Links*/
+.top-bar .controls-list > li a:not(.btn) {
+	color: #606060;
+	text-transform: uppercase;
+	font-size: 15px;
+}
+.top-bar .controls-list .control-basket .toggle-basket-preview {
+	background-color: transparent;
+	color: #606060;
+}
+.top-bar .controls-list .control-user #login-change a:last-child,
+.top-bar .controls-list .control-user #login-change .pipe {
+	display: none;
+}
+.top-bar .controls-list .control-user {
+	margin-left: 0;
+}
+.top-bar .controls-list > li .fa:not(.qty-sign) {
+    line-height: 20px;
+     padding-right: 5px;
+     line-height: 20px;
+     float: left;
+}
+/*Slider */
+.carousel-control.left,
+.carousel-control.right {
+	background-image: none;
+}
+/* 3er Boxen*/
+.boxenHome {
+	margin: 30px -15px 50px;
+}
+.infoBox {
+	border: 1px solid #606060;
+	text-align: center;
+	position: relative;
+	padding-bottom: 40px;
+}
+.infoBox h2, .first h2 {
+	margin-top: -25px;
+    font-size: 45px;
+    text-align: center;
+    margin-bottom: 20px;
+    background: #fff;
+    display: inline-block;
+    width: auto;
+    padding: 0 20px;
+}
+.infoBox img {
+	display: block;
+	margin: 0 auto;
+}
+.infoBox a {
+	display: block;
+	background: #fff;
+	color: #606060;
+	text-transform: uppercase;
+	position: absolute;
+	bottom: 60px;
+	left: 50%;
+	transform: translateX(-50%);
+	padding: 8px 10px;
+}
+/* Home Produkte */
+@media (min-width: 1200px) {
+	.home .product-list {
+	   	margin: 0;
+	}
+}
+.border {
+	border: 1px solid #606060;
+	padding: 5px;
+}
+.first a {
+	display: block;
+	color: #606060;
+	border: 1px solid #606060;
+	text-transform: uppercase;
+	padding: 8px 10px;
+	margin: 0 auto;
+	max-width: 150px;
+	text-align: center;
+}
+.topProdukte, .neuheiten {
+	margin-bottom: 50px;
+}
+/* Produkt auslisutng*/
+.cmp-product-thumb {
+	overflow: visible;
+}
+.cmp-product-thumb .prices {
+	display: block;
+}
+.cmp-product-thumb .price {
+    color: #606060;
+    line-height: 28px;
+    font-weight: normal;
+    font-size: 25px;
+    text-align: center;
+    position: absolute;
+    bottom: -45px;
+    background: #fff;
+    padding: 0px 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+}
+.cmp-product-thumb .thumb-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #606060;
+    text-align: center;
+    line-height: 20px;
+}
+/* Produktübersicht */
+.page-content {
+	padding-top: 50px;
+}
+.page-content,
+.list-controls .list-controls-inner {
+	background-color: #fff;
+}
+.categoriegrid .columnLeft .border,
+.product-list .border {
+	margin-bottom: 30px;
+}
+#category-description-container {
+	text-align: center;
+	padding: 0px 10px 10px;
+}
+#category-description-container h1 {
+	display: inline-block;
+    background: #fff;
+    padding: 0px 15px;
+    position: relative;
+    top: -20px;
+}
+.list-controls .filter-toggle{
+	position: relative;
+	right: 0;
+	top: 0;
+	transform: none;
+	display: block;
+	font-family: "ff-market-web";
+	color: #606060;
+	font-size: 30px;
+	background: #fff;
+    width: 100px;
+    text-align: center;
+    display: block;
+    margin: -30px auto 0;
+}
+.list-controls .filter-toggle .fa-sliders {
+	display: none;
+}
+.list-controls #filterCollapse {
+	position: relative;
+	width: auto;
+	margin-left: 0;
+	top: 0;
+}
+.list-controls #filterCollapse.collapse {
+	display: block !important;
+}
+.list-controls #filterCollapse .page-content {
+	border: 0;
+	padding: 15px;
+	margin: 0;
+}
+.list-controls #filterCollapse .card-columns {
+	column-gap: 0;
+	column-count: auto !important;
+}
+.list-controls #filterCollapse .card-columns .h3 {
+	border-bottom: 1px solid #606060;
+	padding-bottom: 10px;
+	cursor: pointer;
+	font-size: 16px;
+}
+.list-controls #filterCollapse .card-columns .h3 .fa {
+	padding-left: 10px;
+}
+.list-controls #filterCollapse .card-columns .h3.open .fa {
+	transform:rotate(-180deg);
+	padding-left: 0;
+	padding-right: 10px;
+}
+.list-controls #filterCollapse .card-columns .form-check {
+	display: none;
+}
+
+/*Footer */
+footer {
+	margin-top: 50px;
+}
+footer .left {
+	width: 35%;
+	float: left;
+	background-color: #ff2008;
+	padding: 50px 20px 50px 100px;
+}
+footer .left ul {
+	padding: 0;
+}
+footer .left ul li {
+	list-style: none;
+}
+footer .center {
+	width: 30%;
+	float: left;
+	background-color: #cc1609;
+	padding: 50px 20px;
+}
+footer .center .col {
+	display: inline-block;
+	width: 80px;
+}
+footer .center .fa {
+	color: #fff;
+	font-size: 25px;
+}
+footer .right {
+	width: 35%;
+	float: left;
+	background-color: #7f0e05;
+	padding: 50px 100px 50px 20px;
+}
+footer .right img {
+	margin-bottom: 30px;
+}
+footer h4 {
+	font-size: 25px;
+}
+footer .footerTop h4,
+footer .footerTop p,
+footer .footerTop a {
+	color: #fff;
+}
+footer .postal {
+	width: 550px;
+    margin: 30px auto;
+    border: 1px solid #606060;
+    padding: 20px;
+    text-align: center;
+}
+footer .postal img {
+	width: 160px;
+    display: block;
+    margin: -30px auto 15px;
+    background: #fff;
+    padding: 0 20px;
+}
+@media (min-width: 992px) {
+	footer .footerTop {
+		display: flex;
+	}
+}
+@media (min-width: 992px) {
+	#mainNavbarCollapsable {
+		width: calc(100% - 240px);
+		float: left;
+	}
+	nav.navbar.megamenu #mainNavbarCollapsable ul.mainmenu {
+	    display: block;
+	    width: 70%;
+	}
+	#mainNavbarCollapsable ul.mainmenu > li > ul {
+		top: 55px;
+	}
+	#mainNavbarCollapsable ul.mainmenu > li.ddown > a:after {
+	   content:'';
+	}
+	.brand-wrapper {
+	    position: relative;
+	    top: 0;
+	    -webkit-transform: none;
+	    transform: none;
+	}
+	.top-bar .controls-list {
+		margin-top: 13px;
+	}
+}
