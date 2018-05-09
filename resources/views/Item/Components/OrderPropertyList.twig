@@ -1,4 +1,4 @@
-{{ component( "Ceres::Item.Components.OrderPropertyListGroup" ) }}
+{{ component( "CeresHermko::Item.Components.OrderPropertyListGroup" ) }}
 
 <script type="x/template" id="vue-order-property-list">
     <div class="order-property-slider m-b-1">
@@ -21,7 +21,7 @@
                       v-tooltip
                       data-toggle="tooltip"
                       data-placement="top"
-                      :title="propertyGroup.group ? propertyGroup.group.names.name : '{{ trans("Ceres::Template.singleItemPropertiesWithoutGroup") }}'">
+                      :title="propertyGroup.group ? propertyGroup.group.names.name : '{{ trans("CeresHermko::Template.singleItemPropertiesWithoutGroup") }}'">
                 </span>
             </div>
 
