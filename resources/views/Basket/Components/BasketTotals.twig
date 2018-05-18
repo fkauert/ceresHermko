@@ -8,7 +8,7 @@
                 {{ LayoutContainer.show("Ceres::BasketTotals.BeforeItemSum") }}
                 <dt v-if="showProperty( 'basket.value_of_items_net' )">
                     {{ trans("Ceres::Template.basketValue") }} ({{ trans("Ceres::Template.basketNet") }})
-                </dt><!--
+                </dt><!-- 
                 --><dd v-if="showProperty( 'basket.value_of_items_net' )">
                     ${ basket.itemSumNet | currency }
                 </dd>
