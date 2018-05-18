@@ -159,7 +159,7 @@ class CeresHermkoServiceProvider extends ServiceProvider
 
             $dispatcher->listen('IO.tpl.item', function (TemplateContainer $container)
             {
-                $container->setTemplate('CeresHermko::Item.SingleItemView');
+                $container->setTemplate('CeresHermko::Item.SingleItemWrapper');
                 return false;
             }, self::PRIORITY);
         }
@@ -170,7 +170,7 @@ class CeresHermkoServiceProvider extends ServiceProvider
 
             $dispatcher->listen('IO.tpl.search', function (TemplateContainer $container)
             {
-                $container->setTemplate('CeresHermko::ItemList.ItemListWrapper');
+                $container->setTemplate('CeresHermko::ItemList.ItemListView');
                 return false;
             }, self::PRIORITY);
         }
