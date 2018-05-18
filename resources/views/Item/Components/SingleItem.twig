@@ -91,11 +91,13 @@
 
             <span class="vat">
               *
-              {% if services.customer.showNetPrices() %}{{ trans("Ceres::Template.itemExclVAT") }}
-              {% else %}{{ trans("Ceres::Template.itemInclVAT") }}
-              {% endif %}
+              {% if services.customer.showNetPrices() %}
+                {{ trans("Ceres::Template.itemExclVAT") }}
+              {% else %}
+                {{ trans("Ceres::Template.itemInclVAT") }}
+             {% endif %}
               {{ trans("Ceres::Template.itemExclusive") }}
-              <a {% if shippingCat is not empty %} data-toggle="modal" href="#shippingscosts" {% endif %} title="{{ trans(" ceres::template.itemshippingcosts") }}"="Ceres::Template.itemShippingCosts") }}"">{{ trans("Ceres::Template.itemShippingCosts") }}</a>
+              <a {% if shippingCat is not empty %} data-toggle="modal" href="#shippingscosts" {% endif %} title="Zu den Versandkosten">{{ trans("Ceres::Template.itemShippingCosts") }}</a>
             </span>
 
             <slot name="AdditionalContentAfterVAT"></slot>
