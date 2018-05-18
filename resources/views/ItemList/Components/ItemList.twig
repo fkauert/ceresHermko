@@ -1,72 +1,26 @@
-<!-- Insert markup for item list here -->
+{% set decimalCount = config("Ceres.item.storeSpecial") %}
+{% set loadingAnimationType = config("Ceres.item.loading_animation_type") %}
+{% set showHeaderNavBar = config("Ceres.header.show_navbars") %}
+
 {{ component( "Ceres::Basket.Components.AddToBasket" ) }}
-{{ component( "Ceres::ItemList.Components.CategoryImageCarousel") }}
+{{ component( "CeresHermko::ItemList.Components.CategoryItem" ) }}
+{{ component( "Ceres::ItemList.Components.CategoryImageCarousel" ) }}
+{{ component( "Ceres::ItemList.Components.ItemLazyImg" ) }}
 {{ component( "Ceres::ItemList.Components.ItemStoreSpecial" ) }}
 
-{% set lang = services.sessionStorage.getLang() %}
-{% set shippingCat = config("Ceres.global.shippingCostsCategoryId") %}
+<script type="x/template" id="vue-item-list">
+    <div id="vue-rendered-item-list"
+         class="item-list-frame{% if loadingAnimationType == "blur" %} blur-effect{% endif %}"
+         v-bind:class="{ 'loading': isLoading, 'is-loaded': !isLoading }">
 
-{% if enableCarousel is not defined %}
-    {% if config("Ceres.item.enable_image_carousel") == "true" %}
-        {% set enableCarousel = "true" %}
-    {% else %}
-        {% set enableCarousel = "false" %}
-    {% endif %}
-{% endif %}
+        {% if loadingAnimationType != "blur" %}
+            {% include "Ceres::ItemList.Partials.LoadingAnimation" %}
+        {% endif %}
 
-<script type="x/template" id="vue-category-item">
-    <article class="cmp cmp-product-thumb cmp-product-thumb--grid">
-        <div class="thumb-inner">
-            <add-to-basket :item="itemData" :use-large-scale="true" :item-url="itemData | itemURL"></add-to-basket>
-
-            <div class="thumb-background"></div>
-
-            <div class="thumb-image">
-                <div class="square-container">
-                    <div class="square-inner main-image">
-                        <category-image-carousel template="#vue-category-image-carousel"
-                                                 :image-urls-data="itemData.images | itemImages(imageUrlAccessor)"
-                                                 :alt-text="itemData | itemName"
-                                                 :item-url="itemData | itemURL"
-                                                 :show-dots="{{ ceresConfig.item.categoryShowDots | json_encode }}"
-                                                 :show-nav="{{ ceresConfig.item.categoryShowNav | json_encode }}"
-                                                 :enable-carousel="{{ enableCarousel }}"
-                                                 ref="categoryImageCarousel">
-                        </category-image-carousel>
-                    </div>
-                </div>
-            </div>
-
-            <!-- STORE SPECIALS -->
-            <item-store-special v-if="storeSpecial" :store-special="storeSpecial"
-                                :recommended-retail-price="itemData.prices.rrp"
-                                :variation-retail-price="itemData.prices.default"
-                                :decimal-count="decimalCount"></item-store-special>
-            <!-- ./STORE SPECIALS -->
-
-            <!-- ITEM DETAILS -->
-            <div class="thumb-content">
-                <a :href="itemData | itemURL" class="thumb-title small">
-                    ${ itemData | itemName }
-                </a>
-                <div class="thumb-meta">
-                    <div class="prices">
-                        <div v-if="itemData.prices.rrp && itemData.prices.rrp.price.value > 0" class="price-view-port">
-                            <del class="crossprice">
-                                ${ itemData.prices.rrp.price.formatted }
-                            </del>
-                        </div>
-                        <div class="price">
-                            ${ itemData.prices.default.unitPrice.formatted } *
-                        </div>
-                    </div>
-                </div>
-                <span class="vat small text-muted">
-                            * {{ trans("Ceres::Template.itemInclVAT") }} {{ trans("Ceres::Template.itemExclusive") }}
-                    <a {% if shippingCat is not empty %} data-toggle="modal" href="#shippingscosts"{% endif %} title="{{ trans("Ceres::Template.itemShippingCosts") }}">{{ trans("Ceres::Template.itemShippingCosts") }}</a>
-                </span>
-            </div>
-            <!-- ./ITEM DETAILS  -->
-        </div>
-    </article>
+        <ul class="product-list row grid">
+            <li v-for="item in items" :key="item.data.variation.id" class="col-xs-12 col-sm-6 col-md-4">
+                <category-item :item-data="item.data" decimal-count="{{ decimalCount }}" image-url-accessor="urlMiddle"></category-item>
+            </li>
+        </ul>
+    </div>
 </script>

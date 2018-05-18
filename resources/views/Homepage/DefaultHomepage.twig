@@ -72,6 +72,8 @@
     {{ component( "Ceres::ItemList.Components.CategoryImageCarousel") }}
     {{ component( "Ceres::Basket.Components.AddToBasket" ) }}
 
+ 	{% set homepageContainer1 = LayoutContainer.show("Ceres::Homepage.Container1") %}
+
 	{% if slider1.url or slider2.url or slider3.url %}
         <div class="hero-main">
             <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
@@ -141,29 +143,27 @@
     		<div class="col-xs-12 col-sm-4">
     			<div class="infoBox">
 		    		<h2>Eigenproduktion</h2>
-		    		<img src="https://www.hermko.de/images/gallery/template/hermko-made-in-eu.jpg" alt="Eigenproduktion">
+		    		<img src="https://www.hermko.de/images/gallery/template/ceres/hermko-eigenproduktion.jpg" alt="Eigenproduktion">
 		    		<a href="https://www.hermko.de/content/aus-eigener-produktion/" title="Zur Eigenproduktion">Jetzt Informieren</a>
 	    		</div>
     		</div>
     		<div class="col-xs-12 col-sm-4">
     			<div class="infoBox">
 		    		<h2>News / Aktuelles</h2>
-		    		<img src="https://www.hermko.de/images/gallery/template/hermko-aktuelles.jpg" alt="News">
+		    		<img src="https://www.hermko.de/images/gallery/template/ceres/hermko-news.jpg" alt="News">
 		    		<a href="https://www.hermko.de/content/news/" title="Zu unseren News">Jetzt Informieren</a>
     			</div>
     		</div>
     		<div class="col-xs-12 col-sm-4">
     			<div class="infoBox">
 		    		<h2>Fabrikverkauf</h2>
-		    		<img src="https://www.hermko.de/images/gallery/template/hermko-fabrikverkauf-box.jpg" alt="Fabrikverkauf">
+		    		<img src="https://www.hermko.de/images/gallery/template/ceres/hermko-fabrikverkauf.jpg" alt="Fabrikverkauf">
 		    		<a href="https://www.hermko.de/content/fabrikverkauf/" title="Zum Fabrikverkauf">Jetzt Informieren</a>
     			</div>
     		</div>
     	</div>
         <div class="row">
             <div class="cmp cmp-hero">
-                {% set homepageContainer1 = LayoutContainer.show("Ceres::Homepage.Container1") %}
-
                 {% set homepageContainer2 = LayoutContainer.show("Ceres::Homepage.Container2") %}
                 {% set homepageContainer3 = LayoutContainer.show("Ceres::Homepage.Container3") %}
 
@@ -279,16 +279,16 @@
                         	<li class="first col-xs-12 col-sm-6 col-md-3 col-lg-3">
                         		<div class="border">
                         		<h2>{{ category3.details[0].name }}</h2>
-                        		<h3>{{ category3.details[0].shortdescription }}</h3>
-                        	<div class="category-description">{{ category3.description }}</div>
-                            <a href="{{ services.category.getURL(category3, lang) }}" class="section-link-all">{{ trans("Ceres::Template.homepageShowAll") }}</a>
+                        		<div class="category-description">
+                        			{{ category3.details[0].description | raw }}
+                        			 <a href="{{ services.category.getURL(category3, lang) }}" class="section-link-all">{{ trans("Ceres::Template.homepageShowAll") }}</a>
+
+                        		</div>
                         		</div>
                         	</li>
                             {% for item in categoryList1 %}
                                 <li class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-                                	<div class="border">
                                     {% include "CeresHermko::Category.Item.Partials.CategoryListItem" with { 'item': item } %}
-                                    </div>
                                 </li>
                             {% endfor %}
                         </ul>
@@ -307,15 +307,16 @@
                         	<li class="first col-xs-12 col-sm-6 col-md-3 col-lg-3">
                         		<div class="border">
                         		<h2>{{ category6.details[0].name }}</h2>
-                        	<div class="category-description">{{ category6.description }}</div>
-                            <a href="{{ services.category.getURL(category6, lang) }}" class="section-link-all"> {{ trans("Ceres::Template.homepageShowAll") }}</a>
+                        	<div class="category-description">
+                        		{{ category6.details[0].description | raw }}
+                        		<a href="{{ services.category.getURL(category6, lang) }}" class="section-link-all"> {{ trans("Ceres::Template.homepageShowAll") }}</a>
+                        	</div>
                         		</div>
                         	</li>
                             {% for item in categoryList2 %}
                                 <li class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-                                	<div class="border">
                                     {% include "CeresHermko::Category.Item.Partials.CategoryListItem" with { 'item': item } %}
-                                    </div>
+
                                 </li>
                             {% endfor %}
                         </ul>
@@ -328,6 +329,30 @@
             {{ LayoutContainer.show("Ceres::Homepage.Container10") }}
 
         </div>
+        <div class="SEO">
+			{% if category is not defined %}
+			    {% set lang = services.sessionStorage.getLang() %}
+				{% set category = services.category.get(130, lang) %}
+			{% endif %}
+
+			{{ category.details.first.description2 | raw }}
+
+        </div>
+        <div class="newsletter">
+        	<div class="border">
+        		<h2>Newsletter</h2>
+                	<script id="n2g_script">
+!function(e,t,n,c,r,a,i){e.Newsletter2GoTrackingObject=r,e[r]=e[r]||function(){(e[r].q=e[r].q||[]).push(arguments)},e[r].l=1*new Date,a=t.createElement(n),i=t.getElementsByTagName(n)[0],a.async=1,a.src=c,i.parentNode.insertBefore(a,i)}(window,document,"script","https://static.newsletter2go.com/utils.js","n2g");
+n2g('create', 'atudomw7-oywa9lfr-4ux');
+n2g('subscribe:createForm');
+</script></div>
+
+                	<div class="clearfix"></div>
+                </div>
+                <p class="center">
+                * {{ trans("Ceres::Template.itemInclVAT") }} {{ trans("Ceres::Template.itemExclusive") }}
+                <a {% if shippingCat is not empty %} data-toggle="modal" href="#shippingscosts"{% endif %} title="{{ trans("Ceres::Template.itemShippingCosts") }}">{{ trans("Ceres::Template.itemShippingCosts") }}</a>
+            </p>
     </div>
 {% else %}
     {{ overrideHomepageContainer }}

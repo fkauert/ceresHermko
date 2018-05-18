@@ -36,7 +36,8 @@
 
 {% if LayoutContainer.show("Ceres::Template.StyleOverwrite") | trim is empty %}
     <link rel="stylesheet" href="{{ plugin_path('Ceres') }}/css/ceres.css">
-    <link rel="stylesheet" href="{{ plugin_path('CeresVanilla') }}/css/main.css">
+    <link rel="stylesheet" href="{{ plugin_path('CeresHermko') }}/css/main.css">
+    <link rel="stylesheet" href="https://www.hermko.de/layout/hermko/css/werk38.css">
 {% endif %}
 
 {{ LayoutContainer.show("Ceres::Template.StyleOverwrite") }}
