@@ -170,7 +170,7 @@ class CeresHermkoServiceProvider extends ServiceProvider
 
             $dispatcher->listen('IO.tpl.search', function (TemplateContainer $container)
             {
-                $container->setTemplate('CeresHermko::ItemList.ItemListView');
+                $container->setTemplate('CeresHermko::ItemList.ItemListWrapper');
                 return false;
             }, self::PRIORITY);
         }
