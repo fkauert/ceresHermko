@@ -2,14 +2,6 @@
 {% set enabledRoutes = config("IO.routing.enabled_routes") | split(', ') %}
 {% set shippingCat = config("Ceres.global.shippingCostsCategoryId") %}
 
-{{ component( "Ceres::Containers.Components.ContainerItemList" ) }}
-
-{% set listType = config("Ceres.item.lists.2.list_type") %}
-{% set tagIds = config("Ceres.item.lists.2.tag_ids") | split(",") %}
-{% set itemListId = 2 %}
-{% set isHome = services.template.isHome() %}
-{% set itemList = item.CrossSellingItems.documents %}
-
 <script type="x/template" id="vue-single-item">
     <div>
         <div class="single container-max page-content">
