@@ -89,26 +89,27 @@
 
             <slot name="AdditionalContentAfterAddToBasket"></slot>
 
-            <span class="vat">
-              *
-              {% if services.customer.showNetPrices() %}
-                {{ trans("Ceres::Template.itemExclVAT") }}
-              {% else %}
-                {{ trans("Ceres::Template.itemInclVAT") }}
-             {% endif %}
-              {{ trans("Ceres::Template.itemExclusive") }}
-              <a {% if shippingCat is not empty %} data-toggle="modal" href="#shippingscosts" {% endif %} title="Zu den Versandkosten">{{ trans("Ceres::Template.itemShippingCosts") }}</a>
-            </span>
+            <div class="col-xs-12">
+              <div class="vat col-xs-12 col-sm-6">
+              <p>  *
+                {% if services.customer.showNetPrices() %}
+                  {{ trans("Ceres::Template.itemExclVAT") }}
+                {% else %}
+                  {{ trans("Ceres::Template.itemInclVAT") }}
+                {% endif %}
+                {{ trans("Ceres::Template.itemExclusive") }}
+                <a {% if shippingCat is not empty %} data-toggle="modal" href="#shippingscosts" {% endif %} title="Zu den Versandkosten">{{ trans("Ceres::Template.itemShippingCosts") }}</a></p>
+              </div>
 
-            <slot name="AdditionalContentAfterVAT"></slot>
-
-            <div class="item-links">
-              {% if "wish-list" in enabledRoutes or "all" in enabledRoutes %}
-                <add-to-wish-list template="#vue-add-to-wish-list" :variation-id="currentVariation.variation.id" :is-active="isInWishList"></add-to-wish-list>
-              {% endif %}
-              <a onclick="javascript:window.print();" data-toggle="tooltip" data-placement="top"  data-original-title="Artikel Drucken">
-                <span class="fa fa-print" title="drucken"></span>
-                drucken</a>
+              <div class="item-links col-xs-12 col-sm-6">
+                {% if "wish-list" in enabledRoutes or "all" in enabledRoutes %}
+                  <add-to-wish-list template="#vue-add-to-wish-list" :variation-id="currentVariation.variation.id" :is-active="isInWishList"></add-to-wish-list>
+                {% endif %}
+                <a onclick="javascript:window.print();" data-toggle="tooltip" data-placement="top" data-original-title="Artikel Drucken">
+                  <span class="fa fa-print" title="drucken"></span>
+                  drucken</a>
+              </div>
+              <slot name="AdditionalContentAfterVAT"></slot>
             </div>
           </div>
         </div>
@@ -266,7 +267,7 @@
         *
         {{ trans("Ceres::Template.itemInclVAT") }}
         {{ trans("Ceres::Template.itemExclusive") }}
-        <a {% if shippingCat is not empty %} data-toggle="modal" href="/hermko/versandkosten" {% endif %} title="{{ trans(" ceres::template.itemshippingcosts") }}">{{ trans("Ceres::Template.itemShippingCosts") }}</a>
+        <a {% if shippingCat is not empty %} data-toggle="modal" href="/hermko/versandkosten" {% endif %} title="{{ trans(" ceres::template.itemshippingcosts") }}"="ceres::template.itemShippingCosts") }}"">{{ trans("Ceres::Template.itemShippingCosts") }}</a>
       </p>
     </div>
   </div>
