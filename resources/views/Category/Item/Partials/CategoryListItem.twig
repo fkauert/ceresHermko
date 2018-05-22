@@ -93,20 +93,6 @@
             <div class="thumb-meta">
                 {{ LayoutContainer.show("Ceres::CategoryItem.BeforePrices", item.data) }}
 
-                <div class="prices">
-                    {% if item.data.prices.rrp is defined and item.data.prices.rrp.price.value != 0 %}
-                        <div class="price-view-port">
-                            <del class="crossprice">
-                                {{ item.data.prices.rrp.price.formatted }}
-                            </del>
-                        </div>
-                    {% endif %}
-
-                    <div class="price">
-                        ab {{ item.data.prices.default.unitPrice.formatted }} *
-                    </div>
-                </div>
-
                 {{ LayoutContainer.show("Ceres::CategoryItem.AfterPrices", item.data) }}
             </div>
 
@@ -121,6 +107,19 @@
             {% endif %} #}
         </div>
         <!-- ./ITEM DETAILS  -->
+    </div>
+    <div class="prices">
+        {% if item.data.prices.rrp is defined and item.data.prices.rrp.price.value != 0 %}
+            <div class="price-view-port">
+                <del class="crossprice">
+                    {{ item.data.prices.rrp.price.formatted }}
+                </del>
+            </div>
+        {% endif %}
+
+        <div class="price">
+            ab {{ item.data.prices.default.unitPrice.formatted }} *
+        </div>
     </div>
 </article>
 </div>
