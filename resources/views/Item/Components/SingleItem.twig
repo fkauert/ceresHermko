@@ -106,7 +106,7 @@
               {% if "wish-list" in enabledRoutes or "all" in enabledRoutes %}
                 <add-to-wish-list template="#vue-add-to-wish-list" :variation-id="currentVariation.variation.id" :is-active="isInWishList"></add-to-wish-list>
               {% endif %}
-              <a onclick="javascript:window.print();">
+              <a onclick="javascript:window.print();" data-toggle="tooltip" data-placement="top"  data-original-title="Artikel Drucken">
                 <span class="fa fa-print" title="drucken"></span>
                 drucken</a>
             </div>
