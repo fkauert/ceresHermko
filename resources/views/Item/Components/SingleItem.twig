@@ -73,7 +73,6 @@
                 v-if="currentVariation.filter.isSalable"
                 :item="$store.state.item.variation.documents[0].data"
                 :show-quantity="true"
-                :missing-order-properties="variationMissingProperties"
                 :is-variation-selected="isVariationSelected"></add-to-basket>
               <slot name="AfterAddToBasket"></slot>
             </div>
@@ -109,7 +108,7 @@
                   <span class="fa fa-print" title="drucken"></span>
                   drucken</a>
               </div>
-              <div class="clear"></div> 
+              <div class="clear"></div>
               <slot name="AdditionalContentAfterVAT"></slot>
             </div>
           </div>
