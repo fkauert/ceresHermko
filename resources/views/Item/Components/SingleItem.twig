@@ -51,29 +51,24 @@
             </span>
 
             <div class="base-price text-muted m-y-1" v-if="currentVariation.unit && !(currentVariation.unit.unitOfMeasurement === 'C62' && currentVariation.unit.content === 1)">
-              <div>
-                {{ trans("Ceres::Template.itemContent") }}
-                <span>${ currentVariation.unit.content | numberFormat }</span>
-                <span>${ currentVariation.unit.names.name }</span>
-              </div>
-              <div v-if="currentVariation.variation.mayShowUnitPrice">
-                {{ trans("Ceres::Template.itemUnitPrice") }}
-                <span class="base-price-value">
-                  ${ variationGraduatedPrice.basePrice }
-                </span>
-              </div>
+              {{ trans("Ceres::Template.itemContent") }}
+              <span>${ currentVariation.unit.content | numberFormat }</span>
+              <span>${ currentVariation.unit.names.name }</span>
             </div>
+
+            <div v-if="currentVariation.variation.mayShowUnitPrice">
+              {{ trans("Ceres::Template.itemUnitPrice") }}
+              <span class="base-price-value">
+                ${ variationGraduatedPrice.basePrice }
+              </span>
+            </div>
+          </div>
 
             <slot name="AfterPrice"></slot>
 
             <div class="row m-y-1">
               <slot name="BeforeAddToBasket"></slot>
-              <add-to-basket
-                template="#vue-add-to-basket"
-                v-if="currentVariation.filter.isSalable"
-                :item="$store.state.item.variation.documents[0].data"
-                :show-quantity="true"
-                :is-variation-selected="isVariationSelected"></add-to-basket>
+              <add-to-basket template="#vue-add-to-basket" v-if="currentVariation.filter.isSalable" :item="$store.state.item.variation.documents[0].data" :show-quantity="true" :is-variation-selected="isVariationSelected"></add-to-basket>
               <slot name="AfterAddToBasket"></slot>
             </div>
             <span v-if="currentVariation.variation.availability" :class="'availability tag availability_' + currentVariation.variation.availability.id">
@@ -90,14 +85,16 @@
 
             <div class="single-footer">
               <div class="vat col-xs-12 col-sm-6">
-              <p>  *
-                {% if services.customer.showNetPrices() %}
-                  {{ trans("Ceres::Template.itemExclVAT") }}
-                {% else %}
-                  {{ trans("Ceres::Template.itemInclVAT") }}
-                {% endif %}
-                {{ trans("Ceres::Template.itemExclusive") }}
-                <a {% if shippingCat is not empty %} data-toggle="modal" href="#shippingscosts" {% endif %} title="Zu den Versandkosten">{{ trans("Ceres::Template.itemShippingCosts") }}</a></p>
+                <p>
+                  *
+                  {% if services.customer.showNetPrices() %}
+                    {{ trans("Ceres::Template.itemExclVAT") }}
+                  {% else %}
+                    {{ trans("Ceres::Template.itemInclVAT") }}
+                  {% endif %}
+                  {{ trans("Ceres::Template.itemExclusive") }}
+                  <a {% if shippingCat is not empty %} data-toggle="modal" href="#shippingscosts" {% endif %} title="Zu den Versandkosten">{{ trans("Ceres::Template.itemShippingCosts") }}</a>
+                </p>
               </div>
 
               <div class="item-links col-xs-12 col-sm-6">
