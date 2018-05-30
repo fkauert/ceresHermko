@@ -276,7 +276,7 @@
                 <div class="m-b-2 clearfix topProdukte">
                     {% if homepageContainer6 | trim is empty %}
                         <ul class="product-list grid">
-                        	<li class="first col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                        	<li class="first col-xs-12 col-sm-12 col-md-6 col-lg-3">
                         		<div class="border">
                         		<h2>{{ category3.details[0].name }}</h2>
                         		<div class="category-description">
@@ -287,7 +287,7 @@
                         		</div>
                         	</li>
                             {% for item in categoryList1 %}
-                                <li class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                                <li class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
                                     {% include "CeresHermko::Category.Item.Partials.CategoryListItem" with { 'item': item } %}
                                 </li>
                             {% endfor %}
@@ -304,7 +304,7 @@
                 <div class="m-b-2 clearfix neuheiten">
                     {% if homepageContainer9 | trim is empty %}
                         <ul class="product-list grid">
-                        	<li class="first col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                        	<li class="first col-xs-12 col-sm-12 col-md-6 col-lg-3">
                         		<div class="border">
                         		<h2>{{ category6.details[0].name }}</h2>
                         	<div class="category-description">
@@ -314,7 +314,7 @@
                         		</div>
                         	</li>
                             {% for item in categoryList2 %}
-                                <li class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                                <li class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
                                     {% include "CeresHermko::Category.Item.Partials.CategoryListItem" with { 'item': item } %}
 
                                 </li>
