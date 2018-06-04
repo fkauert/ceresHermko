@@ -115,7 +115,7 @@ class CeresHermkoServiceProvider extends ServiceProvider
 
             $dispatcher->listen('IO.tpl.checkout', function (TemplateContainer $container)
             {
-                $container->setTemplate('CeresHermko::Checkout.Checkout');
+                $container->setTemplate('CeresHermko::Checkout.CheckoutView');
                 return false;
             }, self::PRIORITY);
         }
