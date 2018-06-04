@@ -124,7 +124,6 @@
                     <div class="col-md-5 checkout-rightside">
                       <div class="border">
                         <h3>{{ trans("Ceres::Template.basket") }}</h3>
-                        <div class="p-t-2 bg-white">
                             <aside class="sidebar">
                                 <div class="cmp cmp-checkout-sidebar">
                                     <div class="cmp cmp-basket-preview-list">
@@ -135,13 +134,11 @@
                                     <hr>
                                 </div>
                             </aside>
-                        </div>
                       </div>
                     </div>
 
                     <div class="col-md-5 checkout-rightside float-right" v-stick-in-parent>
                       <div class="border">
-                        <div class="p-t-1 bg-white">
                             <aside class="sidebar">
                                 <div class="cmp cmp-checkout-sidebar">
                                     {{ LayoutContainer.show("Ceres::Checkout.BeforeBasketTotals") }}
@@ -149,14 +146,13 @@
                                     {{ LayoutContainer.show("Ceres::Checkout.AfterBasketTotals") }}
                                 </div>
                             </aside>
-                        </div>
-                      </div>
 
-                        <div class="p-b-1 bg-white">
                             {{ LayoutContainer.show("Ceres::Checkout.BeforePlaceOrder") }}
                             <place-order template="#vue-place-order" target-continue="/place-order" @payment-response="checkoutComp.showModal($event)"></place-order>
                             {{ LayoutContainer.show("Ceres::Checkout.AfterPlaceOrder") }}
-                        </div>
+                      </div>
+
+
                     </div>
                 </div>
             </checkout>
