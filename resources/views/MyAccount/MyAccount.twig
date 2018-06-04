@@ -46,21 +46,17 @@
 
     <!-- ADDRESS AREA -->
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-6 invoice">
         <div class="border">
-          <h4>
-            {{ trans("Ceres::Template.accInvoiceAddresses") }}
-          </h4>
+          <h4>{{ trans("Ceres::Template.accInvoiceAddresses") }}</h4>
           <div class="shipping-addresses-select">
             <invoice-address-select :address-list="{{ services.customer.getAddresses(1) | json_encode() }}" :selected-address-id="{{ services.checkout.getBillingAddressId() | json_encode }}"></invoice-address-select>
           </div>
         </div>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-6 delivery">
         <div class="border">
-          <h4>
-            {{ trans("Ceres::Template.accShippingAddresses") }}
-          </h4>
+          <h4>{{ trans("Ceres::Template.accShippingAddresses") }}</h4>
           <div class="shipping-addresses-select">
             <shipping-address-select :address-list="{{ services.customer.getAddresses(2) | json_encode() }}" :selected-address-id="{{ services.checkout.getDeliveryAddressId() | json_encode }}"></shipping-address-select>
           </div>
@@ -71,29 +67,23 @@
 
     <!-- ACCOUNT SETTINGS AREA -->
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-6 account">
         <div class="border">
-          <h4>
-            {{ trans("Ceres::Template.accAccountSettings") }}
-          </h4>
+          <h4>{{ trans("Ceres::Template.accAccountSettings") }}</h4>
           <div class="card m-b-3">
             <account-settings template="#vue-account-settings" :user-data="{{ userObject }}">
               <account-settings></div>
             </div>
           </div>
 
-          <div class="col-md-6">
+          <div class="col-md-6 bank">
             <div class="border">
-              <h4>
-                {{ trans("Ceres::Template.accBankDetails") }}
-              </h4>
+              <h4>{{ trans("Ceres::Template.accBankDetails") }}</h4>
               <bank-data-select template="#vue-bank-data-select" :user-bank-data="{{ userBankData }}" contact-id="{{ frontend.Account.AccountContactId }}"></bank-data-select>
-
             </div>
           </div>
         </div>
         <!-- ./ACCOUNT SETTINGS AREA -->
-
       </div>
 
       {% set ordersPerPage = config("Ceres.my_account.orders_per_page") %}
