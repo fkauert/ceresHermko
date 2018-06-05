@@ -335,12 +335,16 @@
 				{% set category = services.category.get(130, lang) %}
 			{% endif %}
 
-			{{ category.details.first.description2 | raw }}
+			{{ category.details.first.description | raw }}
 
         </div>
-        <div class="newsletter">
-          {% set category = services.category.get(17, lang) %}
-          {{ category.details.first.description1 | raw }}
+        <div class="Newsletter">
+      {% if categoryNews is not defined %}
+        {% set categoryNews = services.category.get(17, lang) %}
+      {% endif %}
+
+      {{ categoryNews.details.first.description | raw }}
+
         </div>
           {{ LayoutContainer.show("Ceres::Homepage.Container10") }}
 
