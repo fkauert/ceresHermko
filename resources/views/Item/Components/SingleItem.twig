@@ -132,9 +132,14 @@
             <li class="nav-item">
               <a class="nav-link" data-toggle="tab" href="#assessments-details" role="tab">{{ trans("Ceres::Template.itemMoreDetails") }}</a>
             </li>
+
+            {% set crossSellingItemsSimilar = services.item.getItemCrossSellingList(item.documents[0].data.item.id, "Similar") %}
+
+             {% if crossSellingItemsSimilar | length > 0 %}
             <li class="nav-item">
               <a class="nav-link" data-toggle="tab" :href="'#similar-' +  currentVariation.variation.id" role="tab">Ähnliche Artikel</a>
             </li>
+            {% endif %}
 
             <slot name="AddDetailTabs"></slot>
           </ul>
