@@ -339,16 +339,11 @@
 
         </div>
         <div class="newsletter">
-      {% if category is not defined %}
-          {% set lang = services.sessionStorage.getLang() %}
-        {% set category = services.category.get(17, lang) %}
-      {% endif %}
-
-      {{ category.details.first.description| raw }}
-
+          {% set category = services.category.get(17, lang) %}
+          {{ category.details.first.description1 | raw }}
         </div>
           {{ LayoutContainer.show("Ceres::Homepage.Container10") }}
-      
+
                 <p class="center">
                 * {{ trans("Ceres::Template.itemInclVAT") }} {{ trans("Ceres::Template.itemExclusive") }}
                 <a  href="hermko/versandkosten" title="{{ trans("Ceres::Template.itemShippingCosts") }}">{{ trans("Ceres::Template.itemShippingCosts") }}</a>
