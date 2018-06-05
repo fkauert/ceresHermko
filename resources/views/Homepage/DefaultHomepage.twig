@@ -326,7 +326,7 @@
                 </div>
             {% endif %}
 
-            {{ LayoutContainer.show("Ceres::Homepage.Container10") }}
+
 
         </div>
         <div class="SEO">
@@ -339,16 +339,16 @@
 
         </div>
         <div class="newsletter">
-        	<div class="border">
-        		<h2>Newsletter</h2>
-                	<script id="n2g_script">
-!function(e,t,n,c,r,a,i){e.Newsletter2GoTrackingObject=r,e[r]=e[r]||function(){(e[r].q=e[r].q||[]).push(arguments)},e[r].l=1*new Date,a=t.createElement(n),i=t.getElementsByTagName(n)[0],a.async=1,a.src=c,i.parentNode.insertBefore(a,i)}(window,document,"script","https://static.newsletter2go.com/utils.js","n2g");
-n2g('create', 'atudomw7-oywa9lfr-4ux');
-n2g('subscribe:createForm');
-</script></div>
+      {% if category is not defined %}
+          {% set lang = services.sessionStorage.getLang() %}
+        {% set category = services.category.get(17, lang) %}
+      {% endif %}
 
-                	<div class="clearfix"></div>
-                </div>
+      {{ category.details.first.description| raw }}
+
+        </div>
+          {{ LayoutContainer.show("Ceres::Homepage.Container10") }}
+      
                 <p class="center">
                 * {{ trans("Ceres::Template.itemInclVAT") }} {{ trans("Ceres::Template.itemExclusive") }}
                 <a  href="hermko/versandkosten" title="{{ trans("Ceres::Template.itemShippingCosts") }}">{{ trans("Ceres::Template.itemShippingCosts") }}</a>
