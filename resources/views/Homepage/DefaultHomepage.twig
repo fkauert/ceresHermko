@@ -338,9 +338,9 @@
 			{{ category.details.first.description | raw }}
 
         </div>
-        <div class="Newsletter">
+        <div class="newsletter">
       {% if categoryNews is not defined %}
-        {% set categoryNews = services.category.get(17, lang) %}
+        {% set categoryNews = services.category.get(409, lang) %}
       {% endif %}
 
       {{ categoryNews.details.first.description | raw }}
