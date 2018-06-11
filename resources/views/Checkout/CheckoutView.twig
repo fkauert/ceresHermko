@@ -9,9 +9,9 @@
 {% block PageBody %}
 
     {{ component( "Ceres::Customer.Components.AddressSelect.AddressSelect" ) }}
-    {{ component( "CeresHermko::Checkout.Components.AcceptGtcCheck" ) }}
+    {{ component( "Ceres::Checkout.Components.AcceptGtcCheck" ) }}
     {{ component( "Ceres::Checkout.Components.PaymentProviderSelect" ) }}
-    {{ component( "CeresHermko::Checkout.Components.ShippingPrivacyHintCheck" ) }}
+    {{ component( "Ceres::Checkout.Components.ShippingPrivacyHintCheck" ) }}
     {{ component( "Ceres::Checkout.Components.ShippingProfileSelect" ) }}
     {{ component( "Ceres::Checkout.Components.PlaceOrder" ) }}
     {{ component( "Ceres::Checkout.Components.ContactWishInput" ) }}
@@ -113,7 +113,7 @@
 
                                 <contact-wish-input class="p-b-1" template="#vue-contact-wish-input"></contact-wish-input>
 
-                                <shipping-privacy-hint-check></shipping-privacy-hint-check>
+                                <shipping-privacy-hint-check template="#vue-shipping-privacy-hint-check"></shipping-privacy-hint-check>
 
                                 <div class="form-check">
                                     <accept-gtc-check template="#vue-accept-gtc-check"></accept-gtc-check>
