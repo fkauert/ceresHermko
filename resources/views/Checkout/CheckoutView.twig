@@ -10,6 +10,7 @@
 
     {{ component( "Ceres::Customer.Components.AddressSelect.AddressSelect" ) }}
     {{ component( "CeresHermko::Checkout.Components.AcceptGtcCheck" ) }}
+    {{ component( "CeresHermko::Checkout.Components.AcceptDHLCheck" ) }}
     {{ component( "Ceres::Checkout.Components.PaymentProviderSelect" ) }}
     {{ component( "Ceres::Checkout.Components.ShippingProfileSelect" ) }}
     {{ component( "Ceres::Checkout.Components.PlaceOrder" ) }}
@@ -114,6 +115,7 @@
 
                                 <div class="form-check">
                                     <accept-gtc-check template="#vue-accept-gtc-check"></accept-gtc-check>
+                                    <accept-dhl-check template="#vue-accept-dhl-check"></accept-dhl-check>
                                 </div>
                                 {{ LayoutContainer.show("Ceres::Checkout.OptIns") }}
                             </div>
