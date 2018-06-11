@@ -10,7 +10,6 @@
 
     {{ component( "Ceres::Customer.Components.AddressSelect.AddressSelect" ) }}
     {{ component( "CeresHermko::Checkout.Components.AcceptGtcCheck" ) }}
-    {{ component( "CeresHermko::Checkout.Components.AcceptDHLCheck" ) }}
     {{ component( "Ceres::Checkout.Components.PaymentProviderSelect" ) }}
     {{ component( "Ceres::Checkout.Components.ShippingProfileSelect" ) }}
     {{ component( "Ceres::Checkout.Components.PlaceOrder" ) }}
@@ -115,7 +114,10 @@
 
                                 <div class="form-check">
                                     <accept-gtc-check template="#vue-accept-gtc-check"></accept-gtc-check>
-                                    <accept-dhl-check template="#vue-accept-dhl-check"></accept-dhl-check>
+                                    <label class="form-check-label" for="shipment-accept" v-bind:class="{ 'error': this.showError }">
+                                        <input class="form-check-input" type="checkbox" value="" id="shipment-accept" v-model="isChecked">
+                                        <span>Ich bin damit einverstanden, dass meine E-Mail-Adresse an DHL (Deutsche Post AG, Charles-de-Gaulle-Straße 20, 53113 Bonn) weitergegeben wird, damit DHL vor der Zustellung der Ware zum Zwecke der Abstimmung eines Liefertermins per E-Mail Kontakt mit mir aufnehmen bzw. Statusinformationen zur Sendungszustellung übermitteln kann. Meine diesbezüglich erteilte Einwilligung kann ich jederzeit widerrufen.</span>
+                                    </label>
                                 </div>
                                 {{ LayoutContainer.show("Ceres::Checkout.OptIns") }}
                             </div>
