@@ -13,6 +13,13 @@
 
     {% include category_template( category.id, lang, webstoreConfig.webstoreId ) ignore missing %}
 
-    {{ category.details[0].first.description | raw }}
+    {% if categoryDesc is not defined %}
+      {% set categoryDesc = services.category.get( category.id, lang) %}
+    {% endif %}
+  
+
+<p class="beschreibung">
+      {{ categoryDesc.details.first.description | raw }}
+  </p>
 
 {% endblock %}
