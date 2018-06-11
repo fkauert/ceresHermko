@@ -9,7 +9,7 @@
 {% block PageBody %}
 
     {{ component( "Ceres::Customer.Components.AddressSelect.AddressSelect" ) }}
-    {{ component( "Ceres::Checkout.Components.AcceptGtcCheck" ) }}
+    {{ component( "CeresHermko::Checkout.Components.AcceptGtcCheck" ) }}
     {{ component( "Ceres::Checkout.Components.PaymentProviderSelect" ) }}
     {{ component( "Ceres::Checkout.Components.ShippingPrivacyHintCheck" ) }}
     {{ component( "Ceres::Checkout.Components.ShippingProfileSelect" ) }}
@@ -41,7 +41,7 @@
                                     {% set overrideBillingAddress = LayoutContainer.show("Ceres::Checkout.BillingAddress") %}
                                     {% if overrideBillingAddress|trim is empty %}
                                         <header class="m-b-1">
-                                            <h3>{{ trans("Ceres::Template.orderInvoiceAddress") }}</h3>
+                                            <h3>{{ trans("Ceres::Template.checkoutInvoiceAddress") }}</h3>
                                         </header>
 
                                         {{ LayoutContainer.show("Ceres::Checkout.BeforeBillingAddress") }}
@@ -60,7 +60,7 @@
                                     {% set overrideShippingAddress = LayoutContainer.show("Ceres::Checkout.ShippingAddress") %}
                                     {% if overrideShippingAddress|trim is empty %}
                                         <header class="m-b-1">
-                                            <h3>{{ trans("Ceres::Template.orderShippingAddress") }}</h3>
+                                            <h3>{{ trans("Ceres::Template.checkoutShippingAddress") }}</h3>
                                         </header>
 
                                         {{ LayoutContainer.show("Ceres::Checkout.BeforeShippingAddress") }}
@@ -80,7 +80,7 @@
                                 {% set overrideShippingProfiles = LayoutContainer.show("Ceres::Checkout.ShippingProfileList") %}
                                 {% if overrideShippingProfiles|trim is empty %}
                                     <header class="m-b-1">
-                                        <h3>{{ trans("Ceres::Template.orderShippingProfile") }}</h3>
+                                        <h3>{{ trans("Ceres::Template.checkoutShippingProfile") }}</h3>
                                     </header>
 
                                     {{ LayoutContainer.show("Ceres::Checkout.BeforeShippingProfileList") }}
@@ -95,7 +95,7 @@
                                 {% set overridePaymentList = LayoutContainer.show("Ceres::Checkout.PaymentList") %}
                                 {% if overridePaymentList|trim is empty %}
                                     <header class="m-b-1">
-                                        <h3>{{ trans("Ceres::Template.orderPaymentMethod") }}</h3>
+                                        <h3>{{ trans("Ceres::Template.checkoutPaymentMethod") }}</h3>
                                     </header>
 
                                     {{ LayoutContainer.show("Ceres::Checkout.BeforePaymentList") }}
@@ -108,7 +108,7 @@
                                 {% endif %}
 
                                 <header>
-                                    <h3>{{ trans("Ceres::Template.orderContactWish") }}</h3>
+                                    <h3>{{ trans("Ceres::Template.checkoutContactWish") }}</h3>
                                 </header>
 
                                 <contact-wish-input class="p-b-1" template="#vue-contact-wish-input"></contact-wish-input>
