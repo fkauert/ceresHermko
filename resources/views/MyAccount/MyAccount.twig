@@ -2,7 +2,7 @@
 
 {% block PartialHead %}
   <meta name="robots" content="NOINDEX, NOFOLLOW">
-  <title>{{ trans("Ceres::Template.accMyAccount") }}
+  <title>{{ trans("Ceres::Template.myAccount") }}
     |
     {{ config("Ceres.header.company_name") }}</title>
 {% endblock %}
@@ -23,17 +23,17 @@
     <!-- HEADER -->
     <div class="row m-b-3">
       <div class="col-xs-12">
-        <h1 class="h2">{{ trans("Ceres::Template.accMyAccount") }}</h1>
+        <h1 class="h2">{{ trans("Ceres::Template.myAccount") }}</h1>
         {% if frontend.Account.getIsAccountLoggedIn %}
           {% if userObject.firstName | length > 0 and userObject.lastName | length > 0 %}
-            <span class="text-muted">{{ trans("Ceres::Template.generalHello", {"username": userObject.firstName ~ " " ~ userObject.lastName}) }}</span>
+            <span class="text-muted">{{ trans("Ceres::Template.myAccountHello", {"username": userObject.firstName ~ " " ~ userObject.lastName}) }}</span>
           {% else %}
-            <span class="text-muted">{{ trans("Ceres::Template.generalHello", {"username": userObject.email}) }}</span>
+            <span class="text-muted">{{ trans("Ceres::Template.myAccountHello", {"username": userObject.email}) }}</span>
           {% endif %}
         {% endif %}
         <a href="#" class="btn btn-danger btn-medium" v-logout="v-logout">
           <i class="fa fa-sign-out"></i>
-          {{ trans("Ceres::Template.accLogout") }}
+          {{ trans("Ceres::Template.loginLogout") }}
         </a>
       </div>
     </div>
@@ -43,7 +43,7 @@
     <div class="row">
       <div class="col-md-6 invoice">
         <div class="border">
-          <h4>{{ trans("Ceres::Template.accInvoiceAddresses") }}</h4>
+          <h4>{{ trans("Ceres::Template.myAccountInvoiceAddresses") }}</h4>
           <div class="shipping-addresses-select">
             <invoice-address-select :address-list="{{ services.customer.getAddresses(1) | json_encode() }}" :selected-address-id="{{ services.checkout.getBillingAddressId() | json_encode }}"></invoice-address-select>
           </div>
@@ -51,7 +51,7 @@
       </div>
       <div class="col-md-6 delivery">
         <div class="border">
-          <h4>{{ trans("Ceres::Template.accShippingAddresses") }}</h4>
+          <h4>{{ trans("Ceres::Template.myAccountShippingAddresses") }}</h4>
           <div class="shipping-addresses-select">
             <shipping-address-select :address-list="{{ services.customer.getAddresses(2) | json_encode() }}" :selected-address-id="{{ services.checkout.getDeliveryAddressId() | json_encode }}"></shipping-address-select>
           </div>
@@ -64,7 +64,7 @@
     <div class="row">
       <div class="col-md-6 account">
         <div class="border">
-          <h4>{{ trans("Ceres::Template.accAccountSettings") }}</h4>
+          <h4>{{ trans("Ceres::Template.myAccountAccountSettings") }}</h4>
           <div class="card m-b-3">
             <account-settings template="#vue-account-settings" :user-data="{{ userObject }}">
               <account-settings></div>
@@ -73,7 +73,7 @@
 
           <div class="col-md-6 bank">
             <div class="border">
-              <h4>{{ trans("Ceres::Template.accBankDetails") }}</h4>
+              <h4>{{ trans("Ceres::Template.myAccountBankDetails") }}</h4>
               <bank-data-select template="#vue-bank-data-select" :user-bank-data="{{ userBankData }}" contact-id="{{ frontend.Account.AccountContactId }}"></bank-data-select>
             </div>
           </div>
