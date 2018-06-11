@@ -25,8 +25,6 @@
     </label>
     <label class="form-check-label" for="shipment-accept" v-bind:class="{ 'error': this.showError }">
         <input class="form-check-input" type="checkbox" value="" id="shipment-accept" v-model="isChecked">
-        {% autoescape false %}
             <span>Ich bin damit einverstanden, dass meine E-Mail-Adresse an DHL (Deutsche Post AG, Charles-de-Gaulle-Straße 20, 53113 Bonn) weitergegeben wird, damit DHL vor der Zustellung der Ware zum Zwecke der Abstimmung eines Liefertermins per E-Mail Kontakt mit mir aufnehmen bzw. Statusinformationen zur Sendungszustellung übermitteln kann. Meine diesbezüglich erteilte Einwilligung kann ich jederzeit widerrufen.</span>
-        {% endautoescape %}
-    </label>
+          </label>
 </script>
