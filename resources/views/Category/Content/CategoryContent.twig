@@ -16,10 +16,10 @@
     {% if categoryDesc is not defined %}
       {% set categoryDesc = services.category.get( category.id, lang) %}
     {% endif %}
-  
 
-<p class="beschreibung">
+
+<div class="beschreibung">
       {{ categoryDesc.details.first.description | raw }}
-  </p>
+  </div>
 
 {% endblock %}
