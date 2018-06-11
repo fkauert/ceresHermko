@@ -1,1 +1,32 @@
-<!-- Insert markup for accept GTC check here -->
+<script type="x/template" id="vue-accept-gtc-check">
+    <label class="form-check-label" for="gtc-accept" v-bind:class="{ 'error': this.showError }">
+        <input class="form-check-input" type="checkbox" value="" id="gtc-accept" v-model="isChecked">
+        {% autoescape false %}
+            {% set gtcContent %}<!--
+                --><a href="/gtc" target="_blank">
+                    <span>{{ trans("Ceres::Template.generalGtc") }}</span>
+                </a><!--
+            -->{% endset %}
+
+            {% set cancellationContent %}<!--
+                --><a href="/cancellation-rights" target="_blank">
+                    <span>{{ trans("Ceres::Template.generalCancellationRight") }}</span>
+                </a><!--
+            -->{% endset %}
+
+            {% set policyContent %}<!--
+                --><a href="/privacy-policy" target="_blank">
+                    <span>{{ trans("Ceres::Template.generalPrivacyPolicy") }}</span>
+                </a><!--
+            -->{% endset %}
+
+            {{ trans("Ceres::Template.generalChooseOur", {"gtc": gtcContent, "cancellation": cancellationContent, "policy": policyContent}) }}
+        {% endautoescape %}
+    </label>
+    <label class="form-check-label" for="shipment-accept" v-bind:class="{ 'error': this.showError }">
+        <input class="form-check-input" type="checkbox" value="" id="shipment-accept" v-model="isChecked">
+        {% autoescape false %}
+            <span>Ich bin damit einverstanden, dass meine E-Mail-Adresse an DHL (Deutsche Post AG, Charles-de-Gaulle-Straße 20, 53113 Bonn) weitergegeben wird, damit DHL vor der Zustellung der Ware zum Zwecke der Abstimmung eines Liefertermins per E-Mail Kontakt mit mir aufnehmen bzw. Statusinformationen zur Sendungszustellung übermitteln kann. Meine diesbezüglich erteilte Einwilligung kann ich jederzeit widerrufen.</span>
+        {% endautoescape %}
+    </label>
+</script>
