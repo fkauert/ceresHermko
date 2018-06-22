@@ -52,13 +52,13 @@
             </span>
 
             <div class="base-price text-muted m-y-1" v-if="currentVariation.unit && !(currentVariation.unit.unitOfMeasurement === 'C62' && currentVariation.unit.content === 1)">
-              {{ trans("Ceres::Template.itemContent") }}
+              {{ trans("Ceres::Template.singleItemContent") }}
               <span>${ currentVariation.unit.content | numberFormat }</span>
               <span>${ currentVariation.unit.names.name }</span>
             </div>
 
             <div v-if="currentVariation.variation.mayShowUnitPrice">
-              {{ trans("Ceres::Template.itemUnitPrice") }}
+              {{ trans("Ceres::Template.singleItemUnitPrice") }}
               <span class="base-price-value">
                 ${ variationGraduatedPrice.basePrice }
               </span>
@@ -107,7 +107,7 @@
                   drucken</a>
               </div>
               <div class="clear"></div>
-              <slot name="AdditionalContentAfterVAT"></slot>
+
             </div>
           </div>
         </div>
@@ -155,6 +155,7 @@
 
             <div class="tab-pane" :id="'rating-' + currentVariation.variation.id" role="tabpanel">
               <slot name="FeedbackContainer"></slot>
+              <slot name="AdditionalContentAfterVAT"></slot>
             </div>
 
             <div class="tab-pane" id="assessments-details" role="tabpanel">
