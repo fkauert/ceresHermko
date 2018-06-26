@@ -13,16 +13,17 @@
               </div>
             </div>
         </div>
-        <div v-if="!isLoggedIn">
-            <a data-toggle="modal" href="{% if services.template.isCurrentTemplate("tpl.login") %}javascript:void(0){% else %}#login{% endif %}" @click="unmarkInputFields()">
+        <div v-if="!isLoggedIn">            
+            <a href="#" class="dropdown-toggle" id="loginList" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fa fa-user" aria-hidden="true"></i>
                 <span>{{ trans("Ceres::Template.login") }}</span>
             </a>
-            <span class="pipe"></span>
-            <a data-toggle="modal" href="#registration" @click="unmarkInputFields()">
-                <i class="fa fa-user-plus" aria-hidden="true"></i>
-                <span>{{ trans("Ceres::Template.loginRegister") }}</span>
-            </a>
+            <div class="login-menu dropdown-menu dropdown-menu-right small">
+              <div class="list-group" aria-labelledby="loginList" >
+                <a href="{% if services.template.isCurrentTemplate("tpl.login") %}javascript:void(0){% else %}#login{% endif %}" @click="unmarkInputFields()" class="list-group-item small"><i class="fa fa-user"></i> {{ trans("Ceres::Template.myAccount") }}</a>
+                <a href="#registration" class="list-group-item small" v-logout><i class="fa fa-user-plus"></i> {{ trans("Ceres::Template.loginRegister") }}</a>
+              </div>
+            </div>
         </div>
     </div>
 </script>
