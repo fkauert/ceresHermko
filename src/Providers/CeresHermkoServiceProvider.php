@@ -38,10 +38,10 @@ class CeresHermkoServiceProvider extends ServiceProvider
             pluginApp(Container::class)->register('CeresHermko::PageDesign.Partials.Header.NavigationList.twig', NavigationCacheSettings::class);
             pluginApp(Container::class)->register('CeresHermko::PageDesign.Partials.Header.SideNavigation.twig', SideNavigationCacheSettings::class);
 
-            $partial->set('head', 'Ceres::PageDesign.Partials.Head');
-            $partial->set('header', 'Ceres::PageDesign.Partials.Header.Header');
-            $partial->set('page-design', 'Ceres::PageDesign.PageDesign');
-            $partial->set('footer', 'Ceres::PageDesign.Partials.Footer');
+            $partial->set('head', 'CeresHermko::PageDesign.Partials.Head');
+            $partial->set('header', 'CeresHermko::PageDesign.Partials.Header.Header');
+            $partial->set('page-design', 'CeresHermko::PageDesign.PageDesign');
+            $partial->set('footer', 'CeresHermko::PageDesign.Partials.Footer');
 
             if (in_array("head", $enabledOverrides) || in_array("all", $enabledOverrides))
             {
@@ -100,7 +100,7 @@ class CeresHermkoServiceProvider extends ServiceProvider
         }
 
         $dispatcher->listen('IO.Component.Import', function(ComponentContainer $container){
-            if( $container->getOriginComponentTemplate() == 'Ceres::ItemList.Components.ItemList')
+            if( $container->getOriginComponentTemplate() == 'CeresHermko::ItemList.Components.ItemList')
             {
                $container->setNewComponentTemplate('CeresHermko::ItemList.Components.ItemList');
             }
@@ -184,7 +184,7 @@ class CeresHermkoServiceProvider extends ServiceProvider
         }
 
         $dispatcher->listen('IO.Component.Import', function(ComponentContainer $container){
-             if( $container->getOriginComponentTemplate() == 'Ceres::ItemList.Components.CategoryItem')
+             if( $container->getOriginComponentTemplate() == 'CeresHermko::ItemList.Components.CategoryItem')
              {
                 $container->setNewComponentTemplate('CeresHermko::ItemList.Components.CategoryItem');
              }
