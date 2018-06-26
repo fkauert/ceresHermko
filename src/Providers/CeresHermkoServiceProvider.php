@@ -9,7 +9,6 @@ use Plenty\Plugin\ServiceProvider;
 use Plenty\Plugin\Events\Dispatcher;
 use Plenty\Plugin\Templates\Twig;
 use IO\Helper\TemplateContainer;
-use IO\Helper\ComponentContainer;
 use IO\Extensions\Functions\Partial;
 use Plenty\Plugin\ConfigRepository;
 
@@ -39,9 +38,9 @@ class CeresHermkoServiceProvider extends ServiceProvider
             pluginApp(Container::class)->register('CeresHermko::PageDesign.Partials.Header.SideNavigation.twig', SideNavigationCacheSettings::class);
 
             $partial->set('head', 'Ceres::PageDesign.Partials.Head');
-            $partial->set('header', 'CeresHermko::PageDesign.Partials.Header.Header');
+            $partial->set('header', 'Ceres::PageDesign.Partials.Header.Header');
             $partial->set('page-design', 'Ceres::PageDesign.PageDesign');
-            $partial->set('footer', 'CeresHermko::PageDesign.Partials.Footer');
+            $partial->set('footer', 'Ceres::PageDesign.Partials.Footer');
 
             if (in_array("head", $enabledOverrides) || in_array("all", $enabledOverrides))
             {
