@@ -9,6 +9,7 @@ use Plenty\Plugin\ServiceProvider;
 use Plenty\Plugin\Events\Dispatcher;
 use Plenty\Plugin\Templates\Twig;
 use IO\Helper\TemplateContainer;
+use IO\Helper\ComponentContainer;
 use IO\Extensions\Functions\Partial;
 use Plenty\Plugin\ConfigRepository;
 
@@ -98,6 +99,13 @@ class CeresHermkoServiceProvider extends ServiceProvider
             }, self::PRIORITY);
         }
 
+        $dispatcher->listen('IO.Component.Import', function(ComponentContainer $container){
+            if( $container->getOriginComponentTemplate() == 'Ceres::ItemList.Components.ItemList')
+            {
+               $container->setNewComponentTemplate('CeresHermko::ItemList.Components.ItemList');
+            }
+          }, 0);
+
         // Override shopping cart
         if (in_array("basket", $enabledOverrides) || in_array("all", $enabledOverrides))
         {
@@ -175,6 +183,12 @@ class CeresHermkoServiceProvider extends ServiceProvider
             }, self::PRIORITY);
         }
 
+        $dispatcher->listen('IO.Component.Import', function(ComponentContainer $container){
+             if( $container->getOriginComponentTemplate() == 'Ceres::ItemList.Components.CategoryItem')
+             {
+                $container->setNewComponentTemplate('CeresHermko::ItemList.Components.CategoryItem');
+             }
+           }, 0);
         // Override my account
         if (in_array("my_account", $enabledOverrides) || in_array("all", $enabledOverrides))
         {
