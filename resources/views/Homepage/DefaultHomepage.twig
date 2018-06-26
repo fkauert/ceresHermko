@@ -305,15 +305,14 @@
     </div>
     <div class="newsletter">
       <h2>Newsletter</h2>
-      <!--{ if categoryNews is not defined %}
-        { set categoryNews = services.category.get(409, lang) %}
-      { endif %}
+      {% if categoryNews is not defined %}
+        {% set categoryNews = services.category.get(409, lang) %}
+      {% endif %}
 
-      { categoryNews.details.first.description | raw }}
--->
-{{ LayoutContainer.show("CeresHermko::Homepage.Container10") }}
+      {{ categoryNews.details.first.description | raw }}
+
     </div>
-
+{{ LayoutContainer.show("CeresHermko::Homepage.Container10") }}
 
     <p class="center">
       *
