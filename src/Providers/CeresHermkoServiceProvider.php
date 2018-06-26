@@ -38,9 +38,9 @@ class CeresHermkoServiceProvider extends ServiceProvider
             pluginApp(Container::class)->register('CeresHermko::PageDesign.Partials.Header.NavigationList.twig', NavigationCacheSettings::class);
             pluginApp(Container::class)->register('CeresHermko::PageDesign.Partials.Header.SideNavigation.twig', SideNavigationCacheSettings::class);
 
-            $partial->set('head', 'CeresHermko::PageDesign.Partials.Head');
+            $partial->set('head', 'Ceres::PageDesign.Partials.Head');
             $partial->set('header', 'CeresHermko::PageDesign.Partials.Header.Header');
-            $partial->set('page-design', 'CeresHermko::PageDesign.PageDesign');
+            $partial->set('page-design', 'Ceres::PageDesign.PageDesign');
             $partial->set('footer', 'CeresHermko::PageDesign.Partials.Footer');
 
             if (in_array("head", $enabledOverrides) || in_array("all", $enabledOverrides))
@@ -98,13 +98,6 @@ class CeresHermkoServiceProvider extends ServiceProvider
                 return false;
             }, self::PRIORITY);
         }
-
-        $dispatcher->listen('IO.Component.Import', function(ComponentContainer $container){
-            if( $container->getOriginComponentTemplate() == 'CeresHermko::ItemList.Components.ItemList')
-            {
-               $container->setNewComponentTemplate('CeresHermko::ItemList.Components.ItemList');
-            }
-          }, 0);
 
         // Override shopping cart
         if (in_array("basket", $enabledOverrides) || in_array("all", $enabledOverrides))
@@ -183,12 +176,6 @@ class CeresHermkoServiceProvider extends ServiceProvider
             }, self::PRIORITY);
         }
 
-        $dispatcher->listen('IO.Component.Import', function(ComponentContainer $container){
-             if( $container->getOriginComponentTemplate() == 'CeresHermko::ItemList.Components.CategoryItem')
-             {
-                $container->setNewComponentTemplate('CeresHermko::ItemList.Components.CategoryItem');
-             }
-           }, 0);
         // Override my account
         if (in_array("my_account", $enabledOverrides) || in_array("all", $enabledOverrides))
         {
