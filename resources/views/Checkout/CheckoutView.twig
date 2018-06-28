@@ -101,8 +101,9 @@
                                     {{ LayoutContainer.show("Ceres::Checkout.BeforePaymentList") }}
                                     <div class="payment-method-select">
                                         <payment-provider-select template="#vue-payment-provider-select"></payment-provider-select>
+                                        {{ LayoutContainer.show("Ceres::Checkout.AfterPaymentList") }}
                                     </div>
-                                    {{ LayoutContainer.show("Ceres::Checkout.AfterPaymentList") }}
+
                                 {% else %}
                                     {{ overridePaymentList }}
                                 {% endif %}
