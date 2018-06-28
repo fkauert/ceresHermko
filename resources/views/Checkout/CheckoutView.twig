@@ -94,6 +94,7 @@
 
                                 {% set overridePaymentList = LayoutContainer.show("Ceres::Checkout.PaymentList") %}
                                 {% if overridePaymentList|trim is empty %}
+                                <div class="border">
                                     <header class="m-b-1">
                                         <h3>{{ trans("Ceres::Template.checkoutPaymentMethod") }}</h3>
                                     </header>
@@ -103,6 +104,7 @@
                                         <payment-provider-select template="#vue-payment-provider-select"></payment-provider-select>
                                     </div>
                                     {{ LayoutContainer.show("Ceres::Checkout.AfterPaymentList") }}
+                                </div>
                                 {% else %}
                                     {{ overridePaymentList }}
                                 {% endif %}
