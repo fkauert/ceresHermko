@@ -59,7 +59,19 @@
         {{ categorySlider.details.first.description2 | raw }}
         <p>tagIDs : {{ tagIds }}</p>
         <p>tagIDList : {{ itemTagList }}</p>
+
+
+        {% if tags > 0 %}
+            <div class="m-t-1 tag-list">
+                {% for tag in tags %}
+                    <span class="tag bg-black">
+                        {{ tag.names.name }}
+                    </span>
+                {% endfor %}
+            </div>
+        {% endif %}
       </div>
+
 
     </div>
 </div>
@@ -95,7 +107,7 @@
     {% endif %}
 
     <div class="clearfix test">
-        <ul class="product-list grid">          
+        <ul class="product-list grid">
           {% for item in tagText %}
             <li class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
               {% include "CeresHermko::Category.Item.Partials.CategoryListItem" with {
