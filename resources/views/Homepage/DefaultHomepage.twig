@@ -10,7 +10,7 @@
   {% set lang = services.sessionStorage.getLang() %}
 
   {% set tagIds = config("Ceres.item.lists.2.tag_ids") | split(",") %}
-	{% set itemTagList = services.itemLoader.loadForTemplate('Ceres::ItemList.ItemListView', itemLoaderPresets.tagList, {'tagIds': tagIds}).documents %}
+	{% set itemTagList = services.itemLoader.loadForTemplate('Ceres::ItemList.ItemListView', itemLoaderPresets.tagList, {'tagIds': tagIds}) %}
   {% set tagText = services.itemLoader.loadForTemplate('Ceres::ItemList.ItemListView', itemLoaderPresets.tagList, {'tagIds': 1}).documents %}
 
   {% set paginatedCategoryList1 = services.itemLoader.loadForTemplate('Ceres::ItemList.ItemListView', itemLoaderPresets.tagList, {
@@ -58,8 +58,8 @@
       <div id="shopInfo">
         {{ categorySlider.details.first.description2 | raw }}
         <p>tagIDs : {{ tagIds | json_encode }}</p>
-        <p>tagIDs ID : {{ tagIds.id | json_encode }}</p>
-        <p>tagIDs Name : {{ tagIds.name | json_encode }}</p>
+        <p>tagIDs ID : {{ tagIds[0] }}</p>
+        <p>tagIDs Name : {{ tagIds[0].name | json_encode }}</p>
         <p>tagIDList : {{ itemTagList | json_encode }}</p>
 
 
