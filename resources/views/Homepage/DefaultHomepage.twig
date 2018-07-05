@@ -9,12 +9,12 @@
 
   {% set lang = services.sessionStorage.getLang() %}
 
+  {% set tagIds = config("Ceres.item.lists.2.tag_ids") | split(",") %}
+	{% set itemTagList = services.itemLoader.loadForTemplate('Ceres::ItemList.ItemListView', itemLoaderPresets.tagList, {'tagIds': tagIds}).documents %}
 
   {% set paginatedCategoryList1 = services.itemLoader.loadForTemplate('Ceres::ItemList.ItemListView', itemLoaderPresets.tagList, {
-    'tagId': 1,
-    'page': 1,
-    'items': 3,
-    'sorting': itemSort
+    'tagIds': 1,
+    'items': 3
   }) %}
 
   {% set paginatedCategoryList2 = services.itemLoader.loadForTemplate('Ceres::ItemList.ItemListView', itemLoaderPresets.tagList, {
