@@ -5,30 +5,6 @@
 {% if overrideHomepageContainer | trim is empty %}
 
   {% set lang = services.sessionStorage.getLang() %}
-
-
-  {% set heroExtra1 = {
-    item: services.itemLoader.loadForTemplate('Ceres::Homepage.Homepage', itemLoaderPresets.items, {
-      variationIds: [config("Ceres.homepage.heroExtraItemId1")]
-    }).documents[0].data,
-    url: config("Ceres.homepage.heroExtraImageUrl1")
-  } %}
-  {% set heroExtra2 = {
-    item: services.itemLoader.loadForTemplate('Ceres::Homepage.Homepage', itemLoaderPresets.items, {
-      variationIds: [config("Ceres.homepage.heroExtraItemId2")]
-    }).documents[0].data,
-    url: config("Ceres.homepage.heroExtraImageUrl2")
-  } %}
-
-  {% if heroExtra1.url | trim is empty and heroExtra1.item.texts is not empty %}
-    {% set heroExtra1Image = heroExtra1.item.images | itemImages | orderByKey('position') | first %}
-    {% set heroExtra1 = heroExtra1 | merge({url: heroExtra1Image.url}) %}
-  {% endif %}
-  {% if heroExtra2.url | trim is empty and heroExtra2.item.texts is not empty %}
-    {% set heroExtra2Image = heroExtra2.item.images | itemImages | orderByKey('position') | first %}
-    {% set heroExtra2 = heroExtra2 | merge({url: heroExtra2Image.url}) %}
-  {% endif %}
-
   {% set category1 = services.category.get(config("Ceres.homepage.homepageCategory1"), lang) %}
   {% set category2 = services.category.get(config("Ceres.homepage.homepageCategory2"), lang) %}
 
@@ -111,8 +87,7 @@
       {% set homepageContainer1 = LayoutContainer.show("Ceres::Homepage.Container1") %}
 
       {% if categoryList1 is not empty or homepageContainer1 | trim is not empty %}
-        <div class="m-b-2 clearfix topProdukte">
-          {% if homepageContainer1 | trim is empty %}
+        <div class="clearfix topProdukte">
             <ul class="product-list grid">
               <li class="first col-xs-12 col-sm-12 col-md-6 col-lg-3">
                 <div class="border">
@@ -120,7 +95,6 @@
                   <div class="category-description">
                     {{ category1.details[0].description | raw }}
                     <a href="{{ services.category.getURL(category1, lang) }}" class="section-link-all">{{ trans("Ceres::Template.homepageShowAll") }}</a>
-
                   </div>
                 </div>
               </li>
@@ -132,15 +106,12 @@
                 </li>
               {% endfor %}
             </ul>
-          {% else %}
-            {{ homepageContainer1 }}<p>Jo</p>
-          {% endif %}
         </div>
       {% endif %}
 
       {% set homepageContainer2 = LayoutContainer.show("Ceres::Homepage.Container2") %}
       {% if categoryList2 is not empty or homepageContainer2 | trim is not empty %}
-        <div class="m-b-2 clearfix neuheiten">
+        <div class="clearfix neuheiten">
           {% if homepageContainer2 | trim is empty %}
             <ul class="product-list grid">
               <li class="first col-xs-12 col-sm-12 col-md-6 col-lg-3">
@@ -185,7 +156,6 @@
       {{ categoryNews.details.first.description | raw }}
 
     </div>
-{{ LayoutContainer.show("CeresHermko::Homepage.Container10") }}
 
     <p class="center">
       *
