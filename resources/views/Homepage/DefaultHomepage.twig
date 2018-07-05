@@ -54,24 +54,33 @@
   {{ component( "Ceres::Basket.Components.AddToBasket" ) }}
 
 
-  <div id="homeSlider" class="carousel slide" data-ride="carousel">
+<div class="row">
+  <div class="col-xs-12 col-sm-8 padding-0">
+    <div id="homeSlider" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+        {% if categorySlider is not defined %}
+          {% set categorySlider = services.category.get(410, lang) %}
+        {% endif %}
 
-    <div class="carousel-inner">
-      {% if categorySlider is not defined %}
-        {% set categorySlider = services.category.get(410, lang) %}
-      {% endif %}
-
-      {{ categorySlider.details.first.description | raw }}
+        {{ categorySlider.details.first.description | raw }}
+      </div>
+      <a class="carousel-control-prev" href="#homeSlider" role="button" data-slide="prev">
+        <span class="fa fa-angle-left" aria-hidden="true"></span>
+        <span class="sr-only">Zurück</span>
+      </a>
+      <a class="carousel-control-next" href="#homeSlider" role="button" data-slide="next">
+        <span class="fa fa-angle-right" aria-hidden="true"></span>
+        <span class="sr-only">Weiter</span>
+      </a>
     </div>
-    <a class="carousel-control-prev" href="#homeSlider" role="button" data-slide="prev">
-      <span class="fa fa-angle-left" aria-hidden="true"></span>
-      <span class="sr-only">Zurück</span>
-    </a>
-    <a class="carousel-control-next" href="#homeSlider" role="button" data-slide="next">
-      <span class="fa fa-angle-right" aria-hidden="true"></span>
-      <span class="sr-only">Weiter</span>
-    </a>
-  </div>
+</div>
+    <div class="col-xs-12 col-sm-4 padding-0">
+      <div id="shopInfo">
+        {{ categorySlider.details.first.description2 | raw }}
+      </div>
+
+    </div>
+</div>
 
   <div class="home container-max">
     <div class="row boxenHome">
