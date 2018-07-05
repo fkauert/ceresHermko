@@ -19,7 +19,7 @@
   }) %}
 
   {% set paginatedCategoryList2 = services.itemLoader.loadForTemplate('Ceres::ItemList.ItemListView', itemLoaderPresets.tagList, {
-    'tagId': 2,
+    'tagId': 33,
     'page': 1,
     'items': 3,
     'sorting': itemSort
@@ -57,11 +57,13 @@
     <div class="col-xs-12 col-sm-4 padding-0">
       <div id="shopInfo">
         {{ categorySlider.details.first.description2 | raw }}
-        <p>tagIDs : {{ tagIds }}</p>
-        <p>tagIDList : {{ itemTagList }}</p>
+        <p>tagIDs : {{ tagIds | json_encode }}</p>
+        <p>tagIDs ID : {{ tagIds.id | json_encode }}</p>
+        <p>tagIDs Name : {{ tagIds.name | json_encode }}</p>
+        <p>tagIDList : {{ itemTagList | json_encode }}</p>
 
 
-        {% if tags > 0 %}
+
             <div class="m-t-1 tag-list">
                 {% for tag in tags %}
                     <span class="tag bg-black">
@@ -69,7 +71,6 @@
                     </span>
                 {% endfor %}
             </div>
-        {% endif %}
       </div>
 
 
