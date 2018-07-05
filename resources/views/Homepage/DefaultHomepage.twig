@@ -8,8 +8,6 @@
 {% if overrideHomepageContainer | trim is empty %}
 
   {% set lang = services.sessionStorage.getLang() %}
-  {% set category1 = services.category.get(config("Ceres.homepage.homepageCategory6"), lang) %}
-  {% set category2 = services.category.get(config("Ceres.homepage.homepageCategory9"), lang) %}
 
 
   {% set paginatedCategoryList1 = services.itemLoader.loadForTemplate('Ceres::ItemList.ItemListView', itemLoaderPresets.tagList, {
@@ -58,11 +56,6 @@
     <div class="col-xs-12 col-sm-4 padding-0">
       <div id="shopInfo">
         {{ categorySlider.details.first.description2 | raw }}
-        <p> category1 id:  {{ category1.id }}</p>
-        <p> category2 id:  {{ category2.id }}</p>
-        <p> tagid2 id:  {{ tag2.id }}</p>
-        <p>test</p>
-        <p>test2: </p>
       </div>
 
     </div>
@@ -95,7 +88,6 @@
 
 
     {% if productDesc is not defined %}
-      {% set lang = services.sessionStorage.getLang() %}
       {% set productDesc = services.category.get(411, lang) %}
     {% endif %}
 
@@ -153,7 +145,6 @@
 
     <div class="SEO">
       {% if category is not defined %}
-        {% set lang = services.sessionStorage.getLang() %}
         {% set category = services.category.get(130, lang) %}
       {% endif %}
 
