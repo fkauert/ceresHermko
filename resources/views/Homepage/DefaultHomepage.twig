@@ -13,7 +13,7 @@
 
 
   {% set paginatedCategoryList1 = services.itemLoader.loadForTemplate('Ceres::ItemList.ItemListView', itemLoaderPresets.tagList, {
-    'tagId': category1.id,
+    'tagId': 1,
     'page': 1,
     'items': 3,
     'sorting': itemSort
@@ -94,17 +94,20 @@
     </div>
 
 
-      {% set homepageContainer6 = LayoutContainer.show("Ceres::Homepage.Container6") %}
+    {% if productDesc is not defined %}
+      {% set lang = services.sessionStorage.getLang() %}
+      {% set productDesc = services.category.get(411, lang) %}
+    {% endif %}
+
 
       {% if categoryList1 is not empty or homepageContainer6 | trim is not empty %}
         <div class="clearfix topProdukte">
             <ul class="product-list grid">
               <li class="first col-xs-12 col-sm-12 col-md-6 col-lg-3">
                 <div class="border">
-                  <h2>{{ category1.details[0].name }}</h2>
+                  <h2>Top Produkte</h2>
                   <div class="category-description">
-                    {{ category1.details[0].description | raw }}
-                    <a href="{{ services.category.getURL(category1, lang) }}" class="section-link-all">{{ trans("Ceres::Template.homepageShowAll") }}</a>
+                    {{ productDesc.details.first.description | raw }}
                   </div>
                 </div>
               </li>
@@ -119,7 +122,7 @@
         </div>
       {% endif %}
 
-      {% set homepageContainer9 = LayoutContainer.show("Ceres::Homepage.Container9") %}
+
 
       {% if categoryList2 is not empty or homepageContainer9 | trim is not empty %}
         <div class="clearfix neuheiten">
@@ -127,11 +130,9 @@
             <ul class="product-list grid">
               <li class="first col-xs-12 col-sm-12 col-md-6 col-lg-3">
                 <div class="border">
-                  <h2>{{ category2.details[0].name }}</h2>
+                  <h2>Neue Produkte</h2>
                   <div class="category-description">
-                    {{ category2.details[0].description | raw }}
-                    <a href="{{ services.category.getURL(category2, lang) }}" class="section-link-all">
-                      {{ trans("Ceres::Template.homepageShowAll") }}</a>
+                    {{ productDesc.details.first.description2 | raw }}
                   </div>
                 </div>
               </li>
