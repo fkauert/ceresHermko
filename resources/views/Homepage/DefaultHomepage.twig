@@ -19,8 +19,8 @@
     'sorting': itemSort
   }) %}
 
-  {% set paginatedCategoryList2 = services.itemLoader.loadForTemplate('Ceres::ItemList.ItemListView', itemLoaderPresets.categoryList, {
-    'categoryId': category2.id,
+  {% set paginatedCategoryList2 = services.itemLoader.loadForTemplate('Ceres::ItemList.ItemListView', itemLoaderPresets.tagList, {
+    'tagId': 2,
     'page': 1,
     'items': 3,
     'sorting': itemSort
@@ -60,6 +60,7 @@
         {{ categorySlider.details.first.description2 | raw }}
         <p> category1 id:  {{ category1.id }}</p>
         <p> category2 id:  {{ category2.id }}</p>
+        <p> tagid2 id:  {{ tag2.id }}</p>
         <p>test</p>
         <p>test2: </p>
       </div>
