@@ -11,7 +11,6 @@ use Plenty\Plugin\Templates\Twig;
 use IO\Helper\TemplateContainer;
 use IO\Extensions\Functions\Partial;
 use Plenty\Plugin\ConfigRepository;
-use CeresHermko\Extensions\MyExtension;
 
 
 /**
@@ -29,6 +28,12 @@ class CeresHermkoServiceProvider extends ServiceProvider
 
     public function boot(Twig $twig, Dispatcher $dispatcher, ConfigRepository $config)
     {
+
+      $dispatcher->listen('IO.ctx.item', function (TemplateContainer $templateContainer, $templateData = [])
+         {
+             $templateContainer->setContext( CeresHermkoSingleItemContext::class);
+             return false;
+         }, 0);
 
         $enabledOverrides = explode(", ", $config->get("CeresHermko.templates.override"));
 
@@ -252,7 +257,5 @@ class CeresHermkoServiceProvider extends ServiceProvider
                 return false;
             }, self::PRIORITY);
         }
-
-        $twig->addExtension(MyExtension::class);
     }
 }
