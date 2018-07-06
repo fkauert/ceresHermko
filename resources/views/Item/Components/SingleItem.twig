@@ -2,6 +2,12 @@
 {% set enabledRoutes = config("IO.routing.enabled_routes") | split(', ') %}
 {% set shippingCat = config("Ceres.global.shippingCostsCategoryId") %}
 
+{% set auslaufArtikel =  services.itemLoader.loadForTemplate('Ceres::ItemList.ItemListView',itemLoaderPresets.tagList, {'tagIds': 3 }) %}
+{% set auslaufArtikelList = auslaufArtikel.documents %}
+
+<p>auslaufArtikelList : {{ auslaufArtikelList | json_encode }}</p>
+<p>auslaufArtikelList ID : {{ auslaufArtikelList.id }}</p>
+
 <script type="x/template" id="vue-single-item">
   <div>
     <div class="single container-max page-content">
@@ -26,6 +32,7 @@
             </p>
             <hr>
 
+
             <!-- Variation -->
             <div class="variationSelectFields" v-if="variations.length > 0">
               <variation-select template="#vue-variation-select" :attributes="attributeNameMap" :variations="variations" :preselect="currentVariation.variation.id" @is-valid-change="isVariationSelected = $event"></variation-select>
@@ -34,8 +41,7 @@
 
             <!-- Verfügbarkeits Mail -->
 
-            <p>Verfügabrkeit: ${ currentVariation.variation.availability.id }</p>
-            <div data-plenty="stocknotification" <!--v-if="currentVariation.variation.availability.id > 2"-->>
+            <div data-plenty="stocknotification" v-if="currentVariation.variation.availability.id > 2">
 
                 <h3>Wir melden uns bei dir,<br>wenn der Artikel wieder verfügbar ist!</h3>
                 <input type="text" placeholder="deine E-Mail" class="emailNotification PlentyText"/>
