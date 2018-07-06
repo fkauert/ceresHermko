@@ -15,8 +15,6 @@
     {% set category5 = services.category.get(config("Ceres.homepage.homepageCategory5"), lang) %}
     {% set category6 = services.category.get(config("Ceres.homepage.homepageCategory6"), lang) %}
 
-  {% set tag2Ids = config("Ceres.item.lists.2.tag_ids") | split(",") %}
-  {% set tag3Ids = config("Ceres.item.lists.3.tag_ids") | split(",") %}
 
   {% set paginatedCategoryList1 =
     services.itemLoader.loadForTemplate(

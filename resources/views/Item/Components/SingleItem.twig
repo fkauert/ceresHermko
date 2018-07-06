@@ -2,7 +2,8 @@
 {% set enabledRoutes = config("IO.routing.enabled_routes") | split(', ') %}
 {% set shippingCat = config("Ceres.global.shippingCostsCategoryId") %}
 
-{% set auslaufArtikel =  services.itemLoader.loadForTemplate('Ceres::ItemList.ItemListView',itemLoaderPresets.tagList, {'tagIds': 3 }) %}
+{% set lang = services.sessionStorage.getLang() %}
+{% set auslaufArtikel =  services.itemLoader.loadForTemplate('Ceres::ItemList.ItemListView',itemLoaderPresets.tagList, {'tagIds': 2 }) %}
 {% set auslaufArtikelList = auslaufArtikel.documents %}
 
 <p>auslaufArtikelList : {{ auslaufArtikelList | json_encode }}</p>
