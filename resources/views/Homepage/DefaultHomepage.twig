@@ -22,13 +22,13 @@
     services.itemLoader.loadForTemplate(
     'Ceres::ItemList.ItemListView',
     itemLoaderPresets.tagList,
-    {'tagId': 3, 'items':3}) %}
+    {'tagId': 3, 'items':3 }) %}
 
     {% set paginatedCategoryList2 =
     services.itemLoader.loadForTemplate(
     'Ceres::ItemList.ItemListView',
-    itemLoaderPresets.categoryList,
-    {'categoryId': category6.id, 'page':1, 'items':3, 'sorting': itemSort}) %}
+    itemLoaderPresets.tagList,
+    {'tagIds': 2, 'items':3 }) %}
 
   {% set categoryList1 = paginatedCategoryList1.documents %}
   {% set categoryList2 = paginatedCategoryList2.documents %}
@@ -64,9 +64,9 @@
         {{ categorySlider.details.first.description2 | raw }}
         <p>category3.id : {{ category3.id }}</p>
         <p>category6.id : {{ category6.id }}</p>
-        <p>categoryList1.item.data.name: {{ categoryList1.item.data.name | json_encode }}
-        <p>categoryList1.id : {{ categoryList1.id | json_encode }}
-          <p>categoryList1.item.id : {{ categoryList1.item.id | json_encode }}
+        <p>categoryList1.item.data.name: {{ categoryList1.item.data.name  }}
+        <p>categoryList1.id : {{ categoryList1.id  }}
+        <p>categoryList1.item.id : {{ categoryList1.item.id  }}
       </div>
 
     </div>
