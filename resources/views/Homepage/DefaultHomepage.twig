@@ -21,8 +21,8 @@
   {% set paginatedCategoryList1 =
     services.itemLoader.loadForTemplate(
     'Ceres::ItemList.ItemListView',
-    itemLoaderPresets.categoryList,
-    {'categoryId': category3.id, 'page':1, 'items':3, 'sorting': itemSort}) %}
+    itemLoaderPresets.tagList,
+    {'tagId': 3, 'page':1, 'items':3, 'sorting': itemSort}) %}
 
     {% set paginatedCategoryList2 =
     services.itemLoader.loadForTemplate(
