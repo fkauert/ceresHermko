@@ -30,7 +30,7 @@ class CeresHermkoServiceProvider extends ServiceProvider
     public function boot(Twig $twig, Dispatcher $dispatcher, ConfigRepository $config)
     {
 
-      $twig->addExtension(TestTwigExtension::class);
+      $twig->addExtension(MyExtension::class);
 
         $enabledOverrides = explode(", ", $config->get("CeresHermko.templates.override"));
 
