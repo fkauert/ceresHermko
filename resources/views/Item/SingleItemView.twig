@@ -9,6 +9,7 @@
 {{ component( "Ceres::Item.Components.GraduatedPrices" ) }}
 {{ component( "CeresHermko::Basket.Components.AddToBasket" ) }}
 
+{% set var = getFree(item.documents[0].data.item.id) %}
 
 <single-item v-cloak template="#vue-single-item" :item-data="{{ item | json_encode }}" :variation-list-data="{{ variations | json_encode }}" :attribute-name-map="{{attributeNameMap | json_encode}}">
     <div slot="BeforePrice">{{ LayoutContainer.show("Ceres::SingleItem.BeforePrice", item.documents[0].data) }}</div>
@@ -21,5 +22,5 @@
     <template slot="AddDetailTabsContent">{{ LayoutContainer.show("Ceres::SingleItem.AddDetailTabsContent", item.documents[0].data) }}</template>
     <div slot="ItemListContainer">{{ LayoutContainer.show("Ceres::SingleItem.ItemListContainer", item) }}</div>
     <div slot="FeedbackContainer">{{ LayoutContainer.show("Ceres::SingleItem.FeedbackContainer", item) }}</div>
-    
+    <div slot="MyFreitextfeld10">{{ var.free10 }}</slot>
 </single-item>
