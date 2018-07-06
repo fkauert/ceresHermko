@@ -97,8 +97,8 @@
 
       {% set homepageContainer6 = LayoutContainer.show("Ceres::Homepage.Container6") %}
 
-      {% if categoryStart is not defined %}
-        {% set category = services.category.get(411), lang) %}
+      {% if category is not defined %}
+        {% set categoryStart  = services.category.get(411), lang) %}
       {% endif %}
 
 
