@@ -12,6 +12,8 @@
 <p>auslaufArtikelList ID : {{ auslaufArtikelList.data.variation.itemId | json_encode }}</p>
 <p>auslaufArtikelList : {{ auslaufArtikelList[0] }}</p>-->
 
+
+<p>{{ item | json_encode() }}</p>
 <script type="x/template" id="vue-single-item">
   <div>
     <div class="single container-max page-content">
@@ -43,7 +45,7 @@
             </div>
             <!-- /Variation -->
 
-            <slot name="FreeVar"></slot>
+
             <!-- Verfügbarkeits Mail -->
 
             <div data-plenty="stocknotification" v-if="currentVariation.variation.availability.id > 2">
