@@ -29,12 +29,6 @@ class CeresHermkoServiceProvider extends ServiceProvider
     public function boot(Twig $twig, Dispatcher $dispatcher, ConfigRepository $config)
     {
 
-      $dispatcher->listen('IO.ctx.item', function (TemplateContainer $templateContainer, $templateData = [])
-         {
-             $templateContainer->setContext( CeresHermkoSingleItemContext::class);
-             return false;
-         }, 0);
-
         $enabledOverrides = explode(", ", $config->get("CeresHermko.templates.override"));
 
         // Override partials
