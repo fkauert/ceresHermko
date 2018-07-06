@@ -36,5 +36,3 @@ class MyExtension extends Twig_Extension
       return $result;
     }
 }
-
-?>

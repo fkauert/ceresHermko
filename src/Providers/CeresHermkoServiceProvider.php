@@ -30,8 +30,6 @@ class CeresHermkoServiceProvider extends ServiceProvider
     public function boot(Twig $twig, Dispatcher $dispatcher, ConfigRepository $config)
     {
 
-      $twig->addExtension(MyExtension::class);
-
         $enabledOverrides = explode(", ", $config->get("CeresHermko.templates.override"));
 
         // Override partials
@@ -254,5 +252,7 @@ class CeresHermkoServiceProvider extends ServiceProvider
                 return false;
             }, self::PRIORITY);
         }
+
+        $twig->addExtension(MyExtension::class);
     }
 }
