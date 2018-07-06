@@ -22,7 +22,7 @@
     <div slot="ItemListContainer">{{ LayoutContainer.show("Ceres::SingleItem.ItemListContainer", item) }}</div>
     <div slot="FeedbackContainer">{{ LayoutContainer.show("Ceres::SingleItem.FeedbackContainer", item) }}</div>
     <div slot="deinSlotName">
-        {% var = getFree(ItemID) %}
+        {% set var = getFree(ItemID) %}
         {{ var.free10 }}
 </div>
 </single-item>
