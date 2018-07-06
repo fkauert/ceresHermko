@@ -33,7 +33,7 @@
             <!-- /Variation -->
 
             <!-- Verfügbarkeits Mail -->
-            <div data-plenty="stocknotification" {% if $AvailabilityId <= 2 %} style="display:none" {% endif %}>
+            <div data-plenty="stocknotification" v-if="currentVariation.variation.availability.id > 2">
 
                 <h3>Wir melden uns bei dir,<br>wenn der Artikel wieder verfügbar ist!</h3>
                 <input type="text" placeholder="deine E-Mail" class="emailNotification PlentyText"/>
