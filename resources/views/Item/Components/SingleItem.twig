@@ -21,7 +21,7 @@
             <h1 class="title">${ currentVariation | itemName }</h1>
             <p class="single-info">
               <span class="single-shortDesc" v-if="currentVariation.texts.shortDescription !== ''" v-html="currentVariation.texts.shortDescription"></span><br/>
-              <span class="articlenumber">Artikelnummer: ${ currentVariation.variation.number }</span>
+              <span class="articlenumber">Artikelnummer: ${ currentVariation.variation.model }</span>
               <slot name="BeforePrice"></slot>
             </p>
             <hr>
@@ -33,7 +33,9 @@
             <!-- /Variation -->
 
             <!-- Verfügbarkeits Mail -->
-            <div data-plenty="stocknotification" v-if="currentVariation.variation.availability.id > 2">
+
+            <p>Verfügabrkeit: ${ currentVariation.variation.availability.id }</p>
+            <div data-plenty="stocknotification" <!--v-if="currentVariation.variation.availability.id > 2"-->>
 
                 <h3>Wir melden uns bei dir,<br>wenn der Artikel wieder verfügbar ist!</h3>
                 <input type="text" placeholder="deine E-Mail" class="emailNotification PlentyText"/>
