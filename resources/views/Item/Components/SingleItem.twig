@@ -9,7 +9,7 @@
         <div class="col-md-6 single-leftside">
           <div class="row">
             <div class="col-xs-12">
-            <p class="title visible-sm">${ currentVariation | itemName }</p>
+              <p class="title visible-sm">${ currentVariation | itemName }</p>
               <item-image-carousel image-url-accessor="url" template="#vue-item-image-carousel"></item-image-carousel>
             </div>
           </div>
@@ -32,9 +32,16 @@
             </div>
             <!-- /Variation -->
 
-
             <!-- Verfügbarkeits Mail -->
-        
+            <div data-plenty="stocknotification" {% if $AvailabilityId <= 2 %} style="display:none" {% endif %}>
+
+                <h3>Wir melden uns bei dir,<br>wenn der Artikel wieder verfügbar ist!</h3>
+                <input type="text" placeholder="deine E-Mail" class="emailNotification PlentyText"/>
+                <button type="button" data-href="positive_stock_notification/" data-loading-text="Bitte warten..." class="btn btn-primary btnNotification" autocomplete="off">
+                    Absenden
+                  </button>
+              <div class="responseNotification margin-bottom-1 collapse"></div>
+            </div>
 
             <!-- /Verfügbarkeits Mail -->
 
@@ -69,7 +76,6 @@
                 ${ variationGraduatedPrice.basePrice }
               </span>
             </div>
-
 
             <slot name="AfterPrice"></slot>
 
@@ -141,7 +147,6 @@
             <li class="nav-item similarTab">
               <a class="nav-link" data-toggle="tab" :href="'#similar-' +  currentVariation.variation.id" role="tab">Ähnliche Artikel</a>
             </li>
-
 
             <slot name="AddDetailTabs"></slot>
           </ul>
