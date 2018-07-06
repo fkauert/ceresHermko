@@ -8,25 +8,27 @@
 {% if overrideHomepageContainer | trim is empty %}
 
   {% set lang = services.sessionStorage.getLang() %}
-  {% set category1 = services.category.get(config("Ceres.homepage.homepageCategory6"), lang) %}
-  {% set category2 = services.category.get(config("Ceres.homepage.homepageCategory9"), lang) %}
+  {% set category1 = services.category.get(config("Ceres.homepage.homepageCategory1"), lang) %}
+    {% set category2 = services.category.get(config("Ceres.homepage.homepageCategory2"), lang) %}
+    {% set category3 = services.category.get(config("Ceres.homepage.homepageCategory3"), lang) %}
+    {% set category4 = services.category.get(config("Ceres.homepage.homepageCategory4"), lang) %}
+    {% set category5 = services.category.get(config("Ceres.homepage.homepageCategory5"), lang) %}
+    {% set category6 = services.category.get(config("Ceres.homepage.homepageCategory6"), lang) %}
 
   {% set tag2Ids = config("Ceres.item.lists.2.tag_ids") | split(",") %}
   {% set tag3Ids = config("Ceres.item.lists.3.tag_ids") | split(",") %}
 
-  {% set paginatedCategoryList1 = services.itemLoader.loadForTemplate('Ceres::ItemList.ItemListView', itemLoaderPresets.categoryList, {
-    'categoryId': category1.id,
-    'page': 1,
-    'items': 3,
-    'sorting': itemSort
-  }) %}
+  {% set paginatedCategoryList1 =
+    services.itemLoader.loadForTemplate(
+    'Ceres::ItemList.ItemListView',
+    itemLoaderPresets.categoryList,
+    {'categoryId': category3.id, 'page':1, 'items':3, 'sorting': itemSort}) %}
 
-  {% set paginatedCategoryList2 = services.itemLoader.loadForTemplate('Ceres::ItemList.ItemListView', itemLoaderPresets.categoryList, {
-    'categoryId': category2.id,
-    'page': 1,
-    'items': 3,
-    'sorting': itemSort
-  }) %}
+    {% set paginatedCategoryList2 =
+    services.itemLoader.loadForTemplate(
+    'Ceres::ItemList.ItemListView',
+    itemLoaderPresets.categoryList,
+    {'categoryId': category6.id, 'page':1, 'items':3, 'sorting': itemSort}) %}
 
   {% set categoryList1 = paginatedCategoryList1.documents %}
   {% set categoryList2 = paginatedCategoryList2.documents %}
@@ -100,10 +102,10 @@
             <ul class="product-list grid">
               <li class="first col-xs-12 col-sm-12 col-md-6 col-lg-3">
                 <div class="border">
-                  <h2>{{ category1.details[0].name }}</h2>
+                  <h2>{{ category3.details[0].name }}</h2>
                   <div class="category-description">
-                    {{ category1.details[0].description | raw }}
-                    <a href="{{ services.category.getURL(category1, lang) }}" class="section-link-all">{{ trans("Ceres::Template.homepageShowAll") }}</a>
+                    {{ category3.details[0].description | raw }}
+                    <a href="{{ services.category.getURL(category3, lang) }}" class="section-link-all">{{ trans("Ceres::Template.homepageShowAll") }}</a>
                   </div>
                 </div>
               </li>
@@ -120,16 +122,16 @@
 
       {% set homepageContainer9 = LayoutContainer.show("Ceres::Homepage.Container9") %}
 
-      {% if categoryList2 is not empty or homepageContainer9 | trim is not empty %}
+
         <div class="clearfix neuheiten">
           {% if homepageContainer2 | trim is empty %}
             <ul class="product-list grid">
               <li class="first col-xs-12 col-sm-12 col-md-6 col-lg-3">
                 <div class="border">
-                  <h2>{{ category2.details[0].name }}</h2>
+                  <h2>{{ category6.details[0].name }}</h2>
                   <div class="category-description">
-                    {{ category2.details[0].description | raw }}
-                    <a href="{{ services.category.getURL(category2, lang) }}" class="section-link-all">
+                    {{ category6.details[0].description | raw }}
+                    <a href="{{ services.category.getURL(category6, lang) }}" class="section-link-all">
                       {{ trans("Ceres::Template.homepageShowAll") }}</a>
                   </div>
                 </div>
@@ -146,7 +148,7 @@
             {{ homepageContainer9 }}<p>test container 9</p>
           {% endif %}
         </div>
-      {% endif %}
+
 
 
     <div class="SEO">
