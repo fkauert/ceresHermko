@@ -6,8 +6,9 @@
 {% set auslaufArtikel =  services.itemLoader.loadForTemplate('Ceres::ItemList.ItemListView',itemLoaderPresets.tagList, {'tagIds': 2 }) %}
 {% set auslaufArtikelList = auslaufArtikel.documents %}
 
-<p>auslaufArtikelList : {{ auslaufArtikelList | json_encode }}</p>
-<p>auslaufArtikelList ID : {{ auslaufArtikelList.id }}</p>
+<!--<p>auslaufArtikelList : {{ auslaufArtikelList | json_encode }}</p>-->
+<p>auslaufArtikelList ID : {{ auslaufArtikelList.data.itemId | json_encode }}</p>
+<p>auslaufArtikelList ID : {{ auslaufArtikelList.id | json_encode }}</p>
 
 <script type="x/template" id="vue-single-item">
   <div>
