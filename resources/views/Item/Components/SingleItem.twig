@@ -11,8 +11,8 @@ itemLoaderPresets.tagList,
 
 {% set itemTagList = tagList.documents %}
 
-<p class="hidden">{{ itemTagList | json_encode }}</p>
-<p class="hidden">{{ itemTagList.data.item.id  }}</p>
+<p>{{ itemTagList | json_encode }}</p>
+<p>{{ itemTagList.data.item.id  }}</p>
 
 <script type="x/template" id="vue-single-item">
   <div>
