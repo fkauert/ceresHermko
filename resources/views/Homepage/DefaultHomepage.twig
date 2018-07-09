@@ -98,8 +98,6 @@
       {% endif %}
 
 
-
-      {% if categoryList1 is not empty or homepageContainer6 | trim is not empty %}
         <div class="clearfix topProdukte">
             <ul class="product-list grid">
               <li class="first col-xs-12 col-sm-12 col-md-6 col-lg-3">
@@ -119,10 +117,8 @@
               {% endfor %}
             </ul>
         </div>
-      {% endif %}
 
       {% set homepageContainer9 = LayoutContainer.show("Ceres::Homepage.Container9") %}
-
 
         <div class="clearfix neuheiten">
           {% if homepageContainer2 | trim is empty %}
@@ -143,9 +139,6 @@
                 </li>
               {% endfor %}
             </ul>
-          {% else %}
-            {{ homepageContainer9 }}<p>test container 9</p>
-          {% endif %}
         </div>
 
 
