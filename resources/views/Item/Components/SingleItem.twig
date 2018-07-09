@@ -2,6 +2,18 @@
 {% set enabledRoutes = config("IO.routing.enabled_routes") | split(', ') %}
 {% set shippingCat = config("Ceres.global.shippingCostsCategoryId") %}
 
+
+{% set tagList =
+services.itemLoader.loadForTemplate(
+'Ceres::ItemList.ItemListView',
+itemLoaderPresets.tagList,
+{'tagIds': 2, 'items':3 }) %}
+
+{% set itemTagList = tagList.documents %}
+
+<p class="hidden">{{ itemTagList | json_encode }}</p>
+<p class="hidden">{{ itemTagList.data.item.id  }}</p>
+
 <script type="x/template" id="vue-single-item">
   <div>
     <div class="single container-max page-content">
@@ -33,7 +45,7 @@
             </div>
             <!-- /Variation -->
 
-          
+
             <!-- Verfügbarkeits Mail -->
 
             <div data-plenty="stocknotification" v-if="currentVariation.variation.availability.id > 2">
