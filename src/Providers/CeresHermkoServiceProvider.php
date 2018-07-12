@@ -76,6 +76,13 @@ class CeresHermkoServiceProvider extends ServiceProvider
             }, self::PRIORITY);
         }
 
+          $dispatcher->listen('IO.Component.Import', function(ComponentContainer $container){
+            if( $container->getOriginComponentTemplate() == 'Ceres::Customer.Components.Contact.ContactForm')
+            {
+               $container->setNewComponentTemplate('CeresHermko::Customer.Contact.ContactForm');
+            }
+          }, self::PRIORITY);
+
         // Override template for content categories
         if (in_array("category_content", $enabledOverrides) || in_array("all", $enabledOverrides))
         {
