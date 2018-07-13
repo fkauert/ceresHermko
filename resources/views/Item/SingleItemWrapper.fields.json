@@ -14,6 +14,7 @@
   "item.condition.names.*",
   "item.add_cms_page",
   "item.description",
+  "item.stockType",
 
   "variation.id",
   "variation.name",
@@ -34,6 +35,7 @@
   "variation.mayShowUnitPrice",
 
   "texts.*",
+  "tags.*",
 
   "salesPrices.*",
 
