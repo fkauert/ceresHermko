@@ -27,7 +27,7 @@ itemLoaderPresets.tagList,
         <!-- ITEM DETAIL -->
         <div class="col-md-6 single-rightside">
           <div class="border">
-            <h1 class="title">${ currentVariation | itemName }</h1>
+            <h1 class="title"><span class="headline">Hermko ${ currentVariation.variation.model }</span> ${ currentVariation | itemName }</h1>
             <p class="single-info">
               <span class="single-shortDesc" v-if="currentVariation.texts.shortDescription !== ''" v-html="currentVariation.texts.shortDescription"></span><br/>
               <span class="articlenumber">Artikelnummer: ${ currentVariation.variation.model }</span>
@@ -45,7 +45,9 @@ itemLoaderPresets.tagList,
 
             <!-- Verfügbarkeits Mail -->
 
-            <p>StockType: ${ currentVariation.item.stockType }</p>
+            <div data-plenty="stockHinweis" v-if="currentVariation.item.stockType == 3">
+                <p>Die gewünschte Variante wird leider nciht mehr hergestellt.</p>
+            </div>
 
             <div data-plenty="stocknotification" v-if="currentVariation.variation.availability.id > 2">
 
@@ -155,9 +157,6 @@ itemLoaderPresets.tagList,
             <li class="nav-item">
               <a class="nav-link" data-toggle="tab" :href="'#rating-' +  currentVariation.variation.id" role="tab">Bewertungen</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" data-toggle="tab" href="#assessments-details" role="tab">{{ trans("Ceres::Template.singleItemMoreDetails") }}</a>
-            </li>
             <li class="nav-item similarTab">
               <a class="nav-link" data-toggle="tab" :href="'#similar-' +  currentVariation.variation.id" role="tab">Ähnliche Artikel</a>
             </li>
@@ -183,102 +182,6 @@ itemLoaderPresets.tagList,
               <slot name="AdditionalContentAfterVAT"></slot>
             </div>
 
-            <div class="tab-pane" id="assessments-details" role="tabpanel">
-              <div class="m-y-2">
-                <table class="table table-striped table-hover table-sm">
-                  <tbody>
-                    {% if 'item.id' in itemData or 'all' in itemData %}
-                      <tr>
-                        <td>{{ trans("Ceres::Template.singleItemId") }}</td>
-                        <td>${ currentVariation.item.id }</td>
-                      </tr>
-                    {% endif %}
-
-                    {% if 'item.condition' in itemData or 'all' in itemData %}
-                      <tr v-if="currentVariation.item.condition && currentVariation.item.condition.names.name !== ''">
-                        <td>{{ trans("Ceres::Template.singleItemCondition") }}</td>
-                        <td>${ currentVariation.item.condition.names.name }</td>
-                      </tr>
-                    {% endif %}
-
-                    {% if 'item.age_rating' in itemData or 'all' in itemData %}
-                      <tr>
-                        <td>{{ trans("Ceres::Template.singleItemAge") }}</td>
-                        <td>{{ trans("Ceres::Template.singleItemFSK", {"age": item.documents[0].data.item.ageRestriction }) }}</td>
-                      </tr>
-                    {% endif %}
-
-                    {% if ('item.external_id' in itemData or 'all' in itemData) %}
-                      <tr v-if="currentVariation.variation.externalId !== ''">
-                        <td>{{ trans("Ceres::Template.singleItemExternalVariationId") }}</td>
-                        <td>${ currentVariation.variation.externalId }</td>
-                      </tr>
-                    {% endif %}
-
-                    {% if ('item.variation_model' in itemData or 'all' in itemData) %}
-                      <tr v-if="currentVariation.variation.model !== ''">
-                        <td>{{ trans("Ceres::Template.singleItemModel") }}</td>
-                        <td>${ currentVariation.variation.model }</td>
-                      </tr>
-                    {% endif %}
-
-                    {% if 'item.manufacturer' in itemData or 'all' in itemData %}
-                      <tr v-if="currentVariation.filter.hasManufacturer && currentVariation.item.manufacturer.externalName !== ''">
-                        <td>{{ trans("Ceres::Template.singleItemManufacturer") }}</td>
-                        <td>${ currentVariation.item.manufacturer.externalName }</td>
-                      </tr>
-                    {% endif %}
-
-                    {% if 'item.producerCountry' in itemData or 'all' in itemData %}
-                      <tr v-if="currentVariation.item.producingCountry && currentVariation.item.producingCountry.names.name !== ''">
-                        <td>{{ trans("Ceres::Template.singleItemManufacturingCountry") }}</td>
-                        <td>${ currentVariation.item.producingCountry.names.name }</td>
-                      </tr>
-                    {% endif %}
-
-                    {% if 'item.variationBase_content' in itemData or 'all' in itemData %}
-                      <tr v-if="currentVariation.unit">
-                        <td>{{ trans("Ceres::Template.singleItemContent") }}</td>
-                        <td>${ currentVariation.unit.content } ${ currentVariation.unit.names.name }</td>
-                      </tr>
-                    {% endif %}
-
-                    {% if 'item.weightG' in itemData or 'all' in itemData %}
-                      <tr v-if="currentVariation.variation.weightG !== ''">
-                        <td>{{ trans("Ceres::Template.singleItemWeight") }}</td>
-                        <td>${ currentVariation.variation.weightG } g</td>
-                      </tr>
-                    {% endif %}
-
-                    {% if 'item.weightNetG' in itemData or 'all' in itemData %}
-                      <tr v-if="currentVariation.variation.weightNetG !== ''">
-                        <td>{{ trans("Ceres::Template.singleItemNetWeight") }}</td>
-                        <td>${ currentVariation.variation.weightNetG } g</td>
-                      </tr>
-                    {% endif %}
-
-                    {% if ('item.variation_dimensions' in itemData or 'all' in itemData) %}
-                      <tr>
-                        <td>{{ trans("Ceres::Template.singleItemDimensions") }}</td>
-                        <td>
-                          <span>${ currentVariation.variation.lengthMM }</span>&times;<!-- -->
-                          <span>${ currentVariation.variation.widthMM }</span>&times;<!-- -->
-                          <span>${ currentVariation.variation.heightMM }</span>
-                          mm
-                        </td>
-                      </tr>
-                    {% endif %}
-
-                    {% if ('item.customs_tariff_number' in itemData or 'all' in itemData) %}
-                      <tr v-if="currentVariation.item.customsTariffNumber !== ''">
-                        <td>{{ trans("Ceres::Template.singleItemCustomsTariffNumber") }}</td>
-                        <td>${ currentVariation.item.customsTariffNumber }</td>
-                      </tr>
-                    {% endif %}
-                  </tbody>
-                </table>
-              </div>
-            </div>
             <div class="tab-pane simArt" :id="'similar-' + currentVariation.variation.id" role="tabpanel">
               <p>Passende Artikel zu ${ currentVariation | itemName }</p>
               <slot name="ItemListContainer"></slot>
