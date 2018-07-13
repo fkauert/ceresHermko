@@ -32,7 +32,7 @@
   {{ component( "Ceres::Basket.Components.AddToBasket" ) }}
 
 
-
+<p class="hidden">{{ categoryList1 | jeson_encode }}</p>
 <div class="row">
   <div class="col-xs-12 col-lg-8 padding-0">
     <div id="homeSlider" class="carousel slide" data-ride="carousel">
@@ -93,7 +93,7 @@
         {% set categoryStart  = services.category.get(411, lang) %}
       {% endif %}
 
-
+	{% if categoryList1 is not empty or homepageContainer6 | trim is not empty %}
         <div class="clearfix topProdukte">
             <ul class="product-list grid">
               <li class="first col-xs-12 col-sm-12 col-md-6 col-lg-3">
@@ -113,6 +113,9 @@
               {% endfor %}
             </ul>
         </div>
+        {% else %}
+                 <p>leer</p>
+      {% endif %}
 
       {% set homepageContainer9 = LayoutContainer.show("Ceres::Homepage.Container9") %}
 
