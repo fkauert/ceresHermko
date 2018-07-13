@@ -13,8 +13,7 @@
     {% set termsAndConditions = services.legalInformation.getTermsAndConditions() %}
 
     <div class="container-max page-content">
-        <div class="row">
-            <div class="col-xs-12">
+          <div class="beschreibung">
                 {% if termsAndConditions.htmlText %}
                     {{ termsAndConditions.htmlText | raw }}
                 {% else %}
@@ -22,7 +21,7 @@
                 {% endif %}
 
                 {{ LayoutContainer.show("Ceres::StaticPages.TermsAndConditions") }}
-            </div>
+          
         </div>
     </div>
 

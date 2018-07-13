@@ -13,8 +13,7 @@
     {% set legalDisclosure = services.legalInformation.getLegalDisclosure() %}
 
     <div class="container-max page-content">
-        <div class="row">
-            <div class="col-xs-12">             
+          <div class="beschreibung">
                 {% if legalDisclosure.htmlText %}
                     {{ legalDisclosure.htmlText | raw }}
                 {% else %}
@@ -22,7 +21,7 @@
                 {% endif %}
 
                 {{ LayoutContainer.show("Ceres::StaticPages.LegalDisclosure") }}
-            </div>
+          
         </div>
     </div>
 

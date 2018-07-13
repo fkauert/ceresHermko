@@ -15,7 +15,6 @@
   "item.add_cms_page",
   "item.description",
   "item.stockType",
-  "stockType.*",
 
 
   "variation.id",

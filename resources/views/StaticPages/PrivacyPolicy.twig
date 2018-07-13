@@ -13,8 +13,7 @@
     {% set privacyPolicy = services.legalInformation.getPrivacyPolicy() %}
 
     <div class="container-max page-content">
-        <div class="row">
-            <div class="col-xs-12">
+          <div class="beschreibung">
                 {% if privacyPolicy.htmlText %}
                     {{ privacyPolicy.htmlText | raw }}
                 {% else %}
@@ -22,7 +21,7 @@
                 {% endif %}
 
                 {{ LayoutContainer.show("Ceres::StaticPages.PrivacyPolicy") }}
-            </div>
+            
         </div>
     </div>
 
