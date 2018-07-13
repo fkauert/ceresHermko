@@ -47,8 +47,7 @@ itemLoaderPresets.tagList,
 
             <!-- Verfügbarkeits Mail -->
 
-            <p>StockType: {{ item.stockType}}</p>
-            <p>Test: {{ item.minimumOrderQuantity }}</p>
+            <p>StockType: ${ currentVariation.item.stockType }</p>
 
             <div data-plenty="stocknotification" v-if="currentVariation.variation.availability.id > 2">
 
