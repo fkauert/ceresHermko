@@ -11,8 +11,7 @@ itemLoaderPresets.tagList,
 
 {% set itemTagList = tagList.documents %}
 
-<p>{{ item | json_encode }}</p>
-<p>{{ itemTagList.data.item.id  }}</p>
+<p class="hidden">{{ item | json_encode }}</p>
 
 <script type="x/template" id="vue-single-item">
   <div>
@@ -49,7 +48,7 @@ itemLoaderPresets.tagList,
             <!-- Verfügbarkeits Mail -->
 
             <p>StockType: {{ item.stockType}}</p>
-            <p>Tag: {{ item.tags.names.name }}</p>
+            <p>Test: {{ item.minimumOrderQuantity }}</p>
 
             <div data-plenty="stocknotification" v-if="currentVariation.variation.availability.id > 2">
 
