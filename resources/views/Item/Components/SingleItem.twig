@@ -18,16 +18,14 @@ itemLoaderPresets.tagList,
     <div class="single container-max page-content">
       <div class="row m-t-3">
         <div class="col-md-6 single-leftside">
-            <div class="border">
-              <p class="title visible-sm">${ currentVariation | itemName }</p>
-              <item-image-carousel image-url-accessor="url" template="#vue-item-image-carousel"></item-image-carousel>
-            </div>
+            <p class="title visible-sm">${ currentVariation | itemName }</p>
+            <item-image-carousel image-url-accessor="url" template="#vue-item-image-carousel"></item-image-carousel>            
         </div>
 
         <!-- ITEM DETAIL -->
         <div class="col-md-6 single-rightside">
           <div class="border">
-            <h1 class="title"><span class="headline">Hermko ${ currentVariation.variation.model }</span> ${ currentVariation | itemName }</h1>
+            <h1 class="title"><span class="headline">Hermko ${ currentVariation.variation.model }</span><br/>${ currentVariation | itemName }</h1>
             <p class="single-info">
               <span class="single-shortDesc" v-if="currentVariation.texts.shortDescription !== ''" v-html="currentVariation.texts.shortDescription"></span><br/>
               <span class="articlenumber">Artikelnummer: ${ currentVariation.variation.model }</span>
@@ -46,7 +44,7 @@ itemLoaderPresets.tagList,
             <!-- Verfügbarkeits Mail -->
 
             <div data-plenty="stockHinweis" v-if="currentVariation.item.stockType == 3">
-                <p>Die gewünschte Variante wird leider nciht mehr hergestellt.</p>
+                <p>Das gewünschte Produkt wird leider nicht mehr hergestellt.</p>
             </div>
 
             <div data-plenty="stocknotification" v-if="currentVariation.variation.availability.id > 2">
