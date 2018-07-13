@@ -50,7 +50,9 @@ itemLoaderPresets.tagList,
 
             <p>StockType: {{ item.stockType}}</p>
             <p>StockType: {{ item.stockType.names.name}}</p>
-            <p>StockType: {{ item.documents[0].data.item.stockType }}
+            <p>StockType: {{ item.documents[0].data.item.stockType }}</p>
+            <p>StockType: {{ currentVariation.item.stockType }}</p>
+            <p>StockType: ${ currentVariation.item.stockType }</p>
 
             <div data-plenty="stocknotification" v-if="currentVariation.variation.availability.id > 2">
 
