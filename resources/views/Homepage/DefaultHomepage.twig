@@ -16,11 +16,7 @@
     {% set category6 = services.category.get(config("Ceres.homepage.homepageCategory6"), lang) %}
 
 
-  {% set paginatedCategoryList1 =
-    services.itemLoader.loadForTemplate(
-    'Ceres::ItemList.ItemListView',
-    itemLoaderPresets.tagList,
-    {'tagIds': 3, 'items':3 }) %}
+  {% set paginatedCategoryList1 = services.itemLoader.loadForTemplate('Ceres::ItemList.ItemListView', itemLoaderPresets.tagList, {'tagIds': 3, 'items':3 }) %}
 
     {% set paginatedCategoryList2 =
     services.itemLoader.loadForTemplate(
@@ -120,7 +116,8 @@
 
       {% set homepageContainer9 = LayoutContainer.show("Ceres::Homepage.Container9") %}
 
-        <div class="clearfix neuheiten">          
+        <div class="clearfix neuheiten">
+          {% if homepageContainer9 | trim is empty %}
             <ul class="product-list grid">
               <li class="first col-xs-12 col-sm-12 col-md-6 col-lg-3">
                 <div class="border">
@@ -138,6 +135,9 @@
                 </li>
               {% endfor %}
             </ul>
+            {% else %}
+                       {{ homepageContainer9 }}
+                   {% endif %}
         </div>
 
 
