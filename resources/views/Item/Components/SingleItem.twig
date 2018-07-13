@@ -48,6 +48,9 @@ itemLoaderPresets.tagList,
 
             <!-- Verfügbarkeits Mail -->
 
+            <p>StockType: {{ item.stockType}}</p>
+            <p>StockType: {{ item.stockType.names.name}}</p>
+
             <div data-plenty="stocknotification" v-if="currentVariation.variation.availability.id > 2">
 
                 <h3>Wir melden uns bei dir,<br>wenn der Artikel wieder verfügbar ist!</h3>
