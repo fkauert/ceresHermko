@@ -19,7 +19,7 @@ itemLoaderPresets.tagList,
       <div class="row m-t-3">
         <div class="col-md-6 single-leftside">
             <p class="title visible-sm">${ currentVariation | itemName }</p>
-            <item-image-carousel image-url-accessor="url" template="#vue-item-image-carousel"></item-image-carousel>            
+            <item-image-carousel image-url-accessor="url" template="#vue-item-image-carousel"></item-image-carousel>
         </div>
 
         <!-- ITEM DETAIL -->
@@ -156,8 +156,13 @@ itemLoaderPresets.tagList,
               <a class="nav-link" data-toggle="tab" :href="'#rating-' +  currentVariation.variation.id" role="tab">Bewertungen</a>
             </li>
             <li class="nav-item similarTab">
-              <a class="nav-link" data-toggle="tab" :href="'#similar-' +  currentVariation.variation.id" role="tab">Ähnliche Artikel</a>
+              <a class="nav-link" data-toggle="tab" :href="'#similar-' +  currentVariation.variation.id" role="tab">Passende Artikel</a>
             </li>
+            <li class="nav-item accessoryTab">
+              <a class="nav-link" data-toggle="tab" :href="'#accessory-' +  currentVariation.variation.id" role="tab">Aähnliche Artikel</a>
+            </li>
+
+
 
             <slot name="AddDetailTabs"></slot>
           </ul>
@@ -184,6 +189,13 @@ itemLoaderPresets.tagList,
               <p>Passende Artikel zu ${ currentVariation | itemName }</p>
               <slot name="ItemListContainer"></slot>
             </div>
+
+            <div class="tab-pane accessoryArt" :id="'accessory-' + currentVariation.variation.id" role="tabpanel">
+              <p>Ähnliche Artikel zu ${ currentVariation | itemName }</p>
+                <slot name="CrossSellingAccessory"></slot>
+            </div>
+
+
             <slot name="AddDetailTabsContent"></slot>
           </div>
         </div>
