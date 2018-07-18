@@ -159,7 +159,7 @@ itemLoaderPresets.tagList,
               <a class="nav-link" data-toggle="tab" :href="'#similar-' +  currentVariation.variation.id" role="tab">Passende Artikel</a>
             </li>
             <li class="nav-item accessoryTab">
-              <a class="nav-link" data-toggle="tab" :href="'#accessory-' +  currentVariation.variation.id" role="tab">Aähnliche Artikel</a>
+              <a class="nav-link" data-toggle="tab" :href="'#accessory-' +  currentVariation.variation.id" role="tab">Ähnliche Artikel</a>
             </li>
 
 
@@ -193,6 +193,7 @@ itemLoaderPresets.tagList,
             <div class="tab-pane accessoryArt" :id="'accessory-' + currentVariation.variation.id" role="tabpanel">
               <p>Ähnliche Artikel zu ${ currentVariation | itemName }</p>
                 <slot name="CrossSellingAccessory"></slot>
+                {{ accessory  }}
             </div>
 
 

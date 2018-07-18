@@ -21,12 +21,7 @@
     <div slot="ItemListContainer">{{ LayoutContainer.show("Ceres::SingleItem.ItemListContainer", item) }}</div>
     <div slot="FeedbackContainer">{{ LayoutContainer.show("Ceres::SingleItem.FeedbackContainer", item) }}</div>
     <div slot="CrossSellingAccessory">
-	{{ component("Ceres::Containers.Components.ContainerItemList") }}
-	{% if accessory|length > 0 %}
-        		<div class="crossSelling">
-        			<span class="h3">Passende Artikel:</span>
-        			<container-item-list :items="{{ accessory| json_encode }}"></container-item-list>
-      		</div>
-	{% endif %}
+	     {{ component("Ceres::Containers.Components.ContainerItemList") }}
+       <container-item-list :items="{{ accessory| json_encode }}"></container-item-list> 
    </div>
 </single-item>
