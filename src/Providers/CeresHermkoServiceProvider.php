@@ -11,7 +11,7 @@ use Plenty\Plugin\Templates\Twig;
 use IO\Helper\TemplateContainer;
 use IO\Extensions\Functions\Partial;
 use Plenty\Plugin\ConfigRepository;
-use CeresHermko\Contexts\CeresHermkoMyContext;
+use CeresHermko\Contexts\MyContext;
 
 
 /**
@@ -35,7 +35,7 @@ class CeresHermkoServiceProvider extends ServiceProvider
 
         $dispatcher->listen('IO.ctx.item', function (TemplateContainer $templateContainer, $templateData = [])
           {
-              $templateContainer->setContext( CeresHermkoMyContext::class);
+              $templateContainer->setContext( MyContext::class);
               return false;
           }, 0);
 

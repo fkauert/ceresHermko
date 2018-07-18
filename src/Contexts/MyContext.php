@@ -3,11 +3,12 @@ namespace CeresHermko\Contexts;
 
 use IO\Helper\ContextInterface;
 use Ceres\Contexts\SingleItemContext;
+use Plenty\Modules\Item\Item\Contracts\ItemRepositoryContract;
 
 use IO\Services\ItemSearch\Services\ItemSearchService;
 use IO\Services\ItemSearch\SearchPresets\CrossSellingItems;
 
-class CeresHermkoMyContext extends SingleItemContext implements ContextInterface
+class MyContext extends SingleItemContext implements ContextInterface
 {
 	public $accessory;
 
