@@ -22,6 +22,7 @@
     <div slot="FeedbackContainer">{{ LayoutContainer.show("Ceres::SingleItem.FeedbackContainer", item) }}</div>
     <div slot="CrossSellingAccessory">
 	     {{ component("Ceres::Containers.Components.ContainerItemList") }}
-       <container-item-list :items="{{ accessory| json_encode }}"></container-item-list> 
+       {{ LayoutContainer.show("Ceres::SingleItem.ItemListContainer", accessory) }}
+       <container-item-list :items="{{ accessory| json_encode }}"></container-item-list>
    </div>
 </single-item>
