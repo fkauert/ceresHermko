@@ -1,5 +1,5 @@
-<!-- Insert markup for default homepage here -->
 {% import "Ceres::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
+{% import "Ceres::PageDesign.Macros.ItemName" as ItemName %}
 
 {% set overrideHomepageContainer = "" %}
 {% for content in container("Ceres::Homepage") if content.plugin != "Plenty" %}
@@ -7,175 +7,325 @@
 {% endfor %}
 {% if overrideHomepageContainer | trim is empty %}
 
-  {% set lang = services.sessionStorage.getLang() %}
-  {% set category1 = services.category.get(config("Ceres.homepage.homepageCategory1"), lang) %}
+    {% set lang = services.sessionStorage.getLang() %}
+
+    {% set slider1 = {
+    item: services.itemLoader.loadForTemplate('Ceres::Homepage.Homepage', itemLoaderPresets.items, {variationIds: [config("Ceres.homepage.sliderItemId1")]}).documents[0].data,
+    url: config("Ceres.homepage.sliderImageUrl1") } %}
+    {% set slider2 = {
+    item: services.itemLoader.loadForTemplate('Ceres::Homepage.Homepage', itemLoaderPresets.items, {variationIds: [config("Ceres.homepage.sliderItemId2")]}).documents[0].data,
+    url: config("Ceres.homepage.sliderImageUrl2") } %}
+    {% set slider3 = {
+    item: services.itemLoader.loadForTemplate('Ceres::Homepage.Homepage', itemLoaderPresets.items, {variationIds: [config("Ceres.homepage.sliderItemId3")]}).documents[0].data,
+    url: config("Ceres.homepage.sliderImageUrl3") } %}
+
+    {% if slider1.url | trim is empty and slider1.item.texts is not empty %}
+        {% set slider1Image = slider1.item.images | itemImages | orderByKey('position') | first %}
+        {% set slider1 = slider1 | merge({url: slider1Image.url}) %}
+    {% endif %}
+    {% if slider2.url | trim is empty and slider2.item.texts is not empty %}
+        {% set slider2Image = slider2.item.images | itemImages | orderByKey('position') | first %}
+        {% set slider2 = slider2 | merge({url: slider2Image.url}) %}
+    {% endif %}
+    {% if slider3.url | trim is empty and slider3.item.texts is not empty %}
+        {% set slider3Image = slider3.item.images | itemImages | orderByKey('position') | first %}
+        {% set slider3 = slider3 | merge({url: slider3Image.url}) %}
+    {% endif %}
+
+    {% set heroExtra1 = {
+    item: services.itemLoader.loadForTemplate('Ceres::Homepage.Homepage', itemLoaderPresets.items, {variationIds: [config("Ceres.homepage.heroExtraItemId1")]}).documents[0].data,
+    url: config("Ceres.homepage.heroExtraImageUrl1") } %}
+    {% set heroExtra2 = {
+    item: services.itemLoader.loadForTemplate('Ceres::Homepage.Homepage', itemLoaderPresets.items, {variationIds: [config("Ceres.homepage.heroExtraItemId2")]}).documents[0].data,
+    url: config("Ceres.homepage.heroExtraImageUrl2") } %}
+
+    {% if heroExtra1.url | trim is empty and heroExtra1.item.texts is not empty %}
+        {% set heroExtra1Image = heroExtra1.item.images | itemImages | orderByKey('position') | first %}
+        {% set heroExtra1 = heroExtra1 | merge({url: heroExtra1Image.url}) %}
+    {% endif %}
+    {% if heroExtra2.url | trim is empty and heroExtra2.item.texts is not empty %}
+        {% set heroExtra2Image = heroExtra2.item.images | itemImages | orderByKey('position') | first %}
+        {% set heroExtra2 = heroExtra2 | merge({url: heroExtra2Image.url}) %}
+    {% endif %}
+
+    {% set category1 = services.category.get(config("Ceres.homepage.homepageCategory1"), lang) %}
     {% set category2 = services.category.get(config("Ceres.homepage.homepageCategory2"), lang) %}
     {% set category3 = services.category.get(config("Ceres.homepage.homepageCategory3"), lang) %}
     {% set category4 = services.category.get(config("Ceres.homepage.homepageCategory4"), lang) %}
     {% set category5 = services.category.get(config("Ceres.homepage.homepageCategory5"), lang) %}
     {% set category6 = services.category.get(config("Ceres.homepage.homepageCategory6"), lang) %}
 
-
-<!--  { set paginatedCategoryList1 = services.itemLoader.loadForTemplate('Ceres::ItemList.ItemListView', itemLoaderPresets.tagList, {'tagIds': 3 }) }-->
-
-{% set paginatedCategoryList1 =
-  services.itemLoader.loadForTemplate(
-  'Ceres::ItemList.ItemListView',
-  itemLoaderPresets.categoryList,
-  {'categoryId': category3.id, 'page':1, 'items':3, 'sorting': itemSort}) %}
-
-  {% set paginatedCategoryList2 =
+    {% set paginatedCategoryList1 =
     services.itemLoader.loadForTemplate(
     'Ceres::ItemList.ItemListView',
     itemLoaderPresets.categoryList,
-    {'categoryId': category6.id, 'page':1, 'items':3, 'sorting': itemSort}) %}
+    {'categoryId': category3.id, 'page':1, 'items':4, 'sorting': itemSort}) %}
 
-  {% set categoryList1 = paginatedCategoryList1.documents %}
-  {% set categoryList2 = paginatedCategoryList2.documents %}
+    {% set paginatedCategoryList2 =
+    services.itemLoader.loadForTemplate(
+    'Ceres::ItemList.ItemListView',
+    itemLoaderPresets.categoryList,
+    {'categoryId': category6.id, 'page':1, 'items':4, 'sorting': itemSort}) %}
 
-  {{ component( "Ceres::ItemList.Components.ItemList") }}
-  {{ component( "Ceres::ItemList.Components.CategoryImageCarousel") }}
-  {{ component( "Ceres::Basket.Components.AddToBasket" ) }}
+    {% set categoryList1 = paginatedCategoryList1.documents %}
+    {% set categoryList2 = paginatedCategoryList2.documents %}
 
+    {{ component( "Ceres::ItemList.Components.ItemList") }}
+    {{ component( "Ceres::ItemList.Components.CategoryImageCarousel") }}
+    {{ component( "Ceres::Basket.Components.AddToBasket" ) }}
 
-<p class="hidden">{{ categoryList1 | json_encode }}</p>
-<div class="row">
-  <div class="col-xs-12 col-lg-8 padding-0">
-    <div id="homeSlider" class="carousel slide" data-ride="carousel">
-      <div class="carousel-inner">
-        {% if categorySlider is not defined %}
-          {% set categorySlider = services.category.get(410, lang) %}
-        {% endif %}
+    <div class="row">
+      <div class="col-xs-12 col-lg-8 padding-0">
+        <div id="homeSlider" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            {% if categorySlider is not defined %}
+              {% set categorySlider = services.category.get(410, lang) %}
+            {% endif %}
 
-        {{ categorySlider.details.first.description | raw }}
-      </div>
-      <a class="carousel-control-prev" href="#homeSlider" role="button" data-slide="prev">
-        <span class="fa fa-angle-left" aria-hidden="true"></span>
-        <span class="sr-only">Zurück</span>
-      </a>
-      <a class="carousel-control-next" href="#homeSlider" role="button" data-slide="next">
-        <span class="fa fa-angle-right" aria-hidden="true"></span>
-        <span class="sr-only">Weiter</span>
-      </a>
+            {{ categorySlider.details.first.description | raw }}
+          </div>
+          <a class="carousel-control-prev" href="#homeSlider" role="button" data-slide="prev">
+            <span class="fa fa-angle-left" aria-hidden="true"></span>
+            <span class="sr-only">Zurück</span>
+          </a>
+          <a class="carousel-control-next" href="#homeSlider" role="button" data-slide="next">
+            <span class="fa fa-angle-right" aria-hidden="true"></span>
+            <span class="sr-only">Weiter</span>
+          </a>
+        </div>
     </div>
-</div>
-    <div class="col-xs-12 col-lg-4 padding-0">
-      <div id="shopInfo">
-        {{ categorySlider.details.first.description2 | raw }}
-      </div>
+        <div class="col-xs-12 col-lg-4 padding-0">
+          <div id="shopInfo">
+            {{ categorySlider.details.first.description2 | raw }}
+          </div>
 
-    </div>
-</div>
-
-  <div class="home container-max">
-    <div class="row boxenHome">
-      <div class="col-xs-12 col-sm-6 col-lg-4">
-        <div class="infoBox">
-          <h2>Eigenproduktion</h2>
-          <img src="https://www.hermko.de/images/gallery/template/ceres/hermko-eigenproduktion.jpg" alt="Eigenproduktion">
-          <a href="https://www.hermko.de/content/aus-eigener-produktion/" title="Zur Eigenproduktion">Jetzt Informieren</a>
         </div>
-      </div>
-      <div class="col-xs-12 col-sm-6 col-lg-4">
-        <div class="infoBox">
-          <h2>News / Aktuelles</h2>
-          <img src="https://www.hermko.de/images/gallery/template/ceres/hermko-news.jpg" alt="News">
-          <a href="https://www.hermko.de/content/news/" title="Zu unseren News">Jetzt Informieren</a>
-        </div>
-      </div>
-      <div class="col-xs-12 col-sm-12 col-lg-4">
-        <div class="infoBox">
-          <h2>Fabrikverkauf</h2>
-          <img src="https://www.hermko.de/images/gallery/template/ceres/hermko-fabrikverkauf.jpg" alt="Fabrikverkauf">
-          <a href="https://www.hermko.de/content/fabrikverkauf/" title="Zum Fabrikverkauf">Jetzt Informieren</a>
-        </div>
-      </div>
     </div>
 
+    <div class="home container-max">
 
-      {% set homepageContainer6 = LayoutContainer.show("Ceres::Homepage.Container6") %}
+      <div class="row boxenHome">
+        <div class="col-xs-12 col-sm-6 col-lg-4">
+          <div class="infoBox">
+            <h2>Eigenproduktion</h2>
+            <img src="https://www.hermko.de/images/gallery/template/ceres/hermko-eigenproduktion.jpg" alt="Eigenproduktion">
+            <a href="https://www.hermko.de/content/aus-eigener-produktion/" title="Zur Eigenproduktion">Jetzt Informieren</a>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-lg-4">
+          <div class="infoBox">
+            <h2>News / Aktuelles</h2>
+            <img src="https://www.hermko.de/images/gallery/template/ceres/hermko-news.jpg" alt="News">
+            <a href="https://www.hermko.de/content/news/" title="Zu unseren News">Jetzt Informieren</a>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-lg-4">
+          <div class="infoBox">
+            <h2>Fabrikverkauf</h2>
+            <img src="https://www.hermko.de/images/gallery/template/ceres/hermko-fabrikverkauf.jpg" alt="Fabrikverkauf">
+            <a href="https://www.hermko.de/content/fabrikverkauf/" title="Zum Fabrikverkauf">Jetzt Informieren</a>
+          </div>
+        </div>
+      </div>
 
-      {% if category is not defined %}
-        {% set categoryStart  = services.category.get(411, lang) %}
-      {% endif %}
+            {% set homepageContainer4 = LayoutContainer.show("Ceres::Homepage.Container4") %}
+            {% set homepageContainer5 = LayoutContainer.show("Ceres::Homepage.Container5") %}
 
-	{% if categoryList1 is not empty or homepageContainer6 | trim is not empty %}
-        <div class="clearfix topProdukte">
-            <ul class="product-list grid">
-              <li class="first col-xs-12 col-sm-12 col-md-6 col-lg-3">
-                <div class="border">
-                  <h2>Top Produkte</h2>
-                  <div class="category-description">
-                      {{ categoryStart.details.first.description | raw }}
-                  </div>
+            {% if category1.details is not empty or homepageContainer4 | trim is not empty or category2.details is not empty or homepageContainer5 | trim is not empty %}
+                <div class="row prop-row m-y-2 sale-new">
+                    {% if category1.details is not empty or homepageContainer4 | trim is not empty %}
+                        <div class="col-xs-{% if category2 is empty and homepageContainer5 | trim is empty %}12{% else %}6{% endif %}">
+                            <div class="prop-xs-6-4 prop-md-3-1">
+                                {% if homepageContainer4 | trim is empty %}
+                                    <div class="prop-inner">
+                                        <a class="featured-sale-new"
+                                           href="{{ services.category.getURL(category1, lang) }}">
+                                            {% if category1.details[0].imagePath %}
+                                                <img src="documents/{{ category1.details[0].imagePath }}"
+                                                     alt="{{ category1.details[0].name }}">
+                                            {% endif %}
+                                            <div class="featured-category-inner">
+                                                <h2 class="featured-category-headline">
+                                                    <i class="fa fa-angle-double-right"
+                                                       aria-hidden="true"></i> {{ category1.details[0].name }}
+                                                </h2>
+                                            </div>
+                                        </a>
+                                    </div>
+                                {% else %}
+                                    {{ homepageContainer4 }}
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    {% if category2.details is not empty or homepageContainer5 | trim is not empty %}
+                        <div class="col-xs-{% if category1 is empty and homepageContainer4 | trim is empty %}12{% else %}6{% endif %}">
+                            <div class="prop-xs-6-4 prop-md-3-1">
+                                {% if homepageContainer5 | trim is empty %}
+                                    <div class="prop-inner">
+                                        <a class="featured-sale-new"
+                                           href="{{ services.category.getURL(category2, lang) }}">
+                                            {% if category2.details[0].imagePath %}
+                                                <img src="documents/{{ category2.details[0].imagePath }}"
+                                                     alt="{{ category2.details[0].name }}">
+                                            {% endif %}
+                                            <div class="featured-category-inner">
+                                                <h2 class="featured-category-headline">
+                                                    <i class="fa fa-angle-double-right"
+                                                       aria-hidden="true"></i> {{ category2.details[0].name }}
+                                                </h2>
+                                            </div>
+                                        </a>
+                                    </div>
+                                {% else %}
+                                    {{ homepageContainer5 }}
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endif %}
                 </div>
-              </li>
-              {% for item in categoryList1 %}
-                <li class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
-                  {% include "CeresHermko::Category.Item.Partials.CategoryListItem" with {
-                    'item' : item
-                  } %}
-                </li>
-              {% endfor %}
-            </ul>
-        </div>
-        {% else %}
-                 <p>leer</p>
-      {% endif %}
+            {% endif %}
 
-      {% set homepageContainer9 = LayoutContainer.show("Ceres::Homepage.Container9") %}
-
-        <div class="clearfix neuheiten">
-          {% if homepageContainer9 | trim is empty %}
-            <ul class="product-list grid">
-              <li class="first col-xs-12 col-sm-12 col-md-6 col-lg-3">
-                <div class="border">
-                  <h2>Neue Produkte</h2>
-                  <div class="category-description">
-                      {{ categoryStart.details.first.description2 | raw }}
-                  </div>
+            {% set homepageContainer6 = LayoutContainer.show("Ceres::Homepage.Container6") %}
+            {% if categoryList1 is not empty or homepageContainer6 | trim is not empty %}
+                <div class="m-b-2 clearfix">
+                    {% if homepageContainer6 | trim is empty %}
+                        <div class="section-header m-b-1">
+                            <h2>{{ category3.details[0].name }}</h2>
+                            <a href="{{ services.category.getURL(category3, lang) }}"
+                               class="section-link-all"><i
+                                        class="fa fa-angle-double-right"
+                                        aria-hidden="true"></i> {{ trans("Ceres::Template.homepageShowAll") }}</a>
+                        </div>
+                        <ul class="product-list row grid">
+                            {% for item in categoryList1 %}
+                                <li class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+                                    {% include "Ceres::Category.Item.Partials.CategoryListItem" with { 'item': item } %}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        {{ homepageContainer6 }}
+                    {% endif %}
                 </div>
-              </li>
-              {% for item in categoryList2 %}
-                <li class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
-                  {% include "CeresHermko::Category.Item.Partials.CategoryListItem" with {
-                    'item' : item
-                  } %}
-                </li>
-              {% endfor %}
-            </ul>
-            {% else %}
-                       {{ homepageContainer9 }}
-                   {% endif %}
+            {% endif %}
+
+            {#<!-- CATEGORIES -->#}
+            {% set homepageContainer7 = LayoutContainer.show("Ceres::Homepage.Container7") %}
+            {% set homepageContainer8 = LayoutContainer.show("Ceres::Homepage.Container8") %}
+            {% if category4.details is not empty or homepageContainer7 | trim is not empty or category5.details is not empty or homepageContainer8 | trim is not empty %}
+                <div class="row prop-row m-y-2 featured-categories">
+                    {% if category4.details is not empty or homepageContainer7 | trim is not empty %}
+                        <div class="col-xs-12 col-lg-{% if category5.details is not empty or homepageContainer8 | trim is not empty %}8{% else %}12{% endif %}">
+                            <div class="prop-xs-6-4 prop-md-3-1 prop-lg-{% if category5.details is not empty or homepageContainer8 | trim is not empty %}2{% else %}3{% endif %}-1">
+                                {% if homepageContainer7 | trim is empty %}
+                                    <div class="prop-inner">
+                                        <a class="featured-category"
+                                           href="{{ services.category.getURL(category4, lang) }}">
+                                            {% if category4.details[0].imagePath %}
+                                                <img src="/documents/{{ category4.details[0].imagePath }}"
+                                                     alt="{{ category4.details[0].name }}">
+                                            {% endif %}
+                                            <div class="featured-category-inner">
+                                                <h2 class="featured-category-headline">
+                                                    <i class="fa fa-angle-double-right"
+                                                       aria-hidden="true"></i> {{ category4.details[0].name }}
+                                                </h2>
+
+                                            </div>
+                                        </a>
+                                    </div>
+                                {% else %}
+                                    {{ homepageContainer7 }}
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    {% if category5.details is not empty or homepageContainer8 | trim is not empty %}
+                        <div class="col-xs-12 col-lg-{% if category4.details is not empty or homepageContainer7 | trim is not empty %}4{% else %}12{% endif %}">
+                            <div class="prop-xs-6-4 prop-md-3-1 prop-lg-{% if category4.details is not empty or homepageContainer7 | trim is not empty %}1{% else %}3{% endif %}-1">
+                                {% if homepageContainer8 | trim is empty %}
+                                    <div class="prop-inner">
+                                        <a class="featured-category"
+                                           href="{{ services.category.getURL(category5, lang) }}">
+                                            {% if category5.details[0].imagePath %}
+                                                <img src="/documents/{{ category5.details[0].imagePath }}"
+                                                     alt="{{ category5.details[0].name }}">
+                                            {% endif %}
+                                            <div class="featured-category-inner">
+                                                <h2 class="featured-category-headline">
+                                                    <i class="fa fa-angle-double-right"
+                                                       aria-hidden="true"></i> {{ category5.details[0].name }}
+                                                </h2>
+                                            </div>
+                                        </a>
+                                    </div>
+                                {% else %}
+                                    {{ homepageContainer8 }}
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            {% endif %}
+
+            <!-- END CATEGORIES -->
+
+            {% set homepageContainer9 = LayoutContainer.show("Ceres::Homepage.Container9") %}
+            {% if categoryList2 is not empty or homepageContainer9 | trim is not empty %}
+                <div class="m-b-2 clearfix">
+                    {% if homepageContainer9 | trim is empty %}
+                        <div class="section-header m-b-1">
+                            <h2>{{ category6.details[0].name }}</h2>
+                            <a href="{{ services.category.getURL(category6, lang) }}"
+                               class="section-link-all"><i
+                                        class="fa fa-angle-double-right"
+                                        aria-hidden="true"></i> {{ trans("Ceres::Template.homepageShowAll") }}</a>
+                        </div>
+                        <!-- crosssell start -->
+                        <ul class="product-list row grid">
+                            {% for item in categoryList2 %}
+                                <li class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+                                    {% include "Ceres::Category.Item.Partials.CategoryListItem" with { 'item': item } %}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        {{ homepageContainer9 }}
+                    {% endif %}
+                </div>
+            {% endif %}
+
+            {{ LayoutContainer.show("Ceres::Homepage.Container10") }}
+
+        </div>
+        <div class="SEO">
+          {% if category is not defined %}
+            {% set lang = services.sessionStorage.getLang() %}
+            {% set category = services.category.get(130, lang) %}
+          {% endif %}
+
+          {{ category.details.first.description | raw }}
+
+        </div>
+        <div class="newsletter">
+          {% if categoryNews is not defined %}
+            {% set categoryNews = services.category.get(409, lang) %}
+          {% endif %}
+
+          {{ categoryNews.details.first.description | raw }}
+
         </div>
 
-
-
-    <div class="SEO">
-      {% if category is not defined %}
-        {% set lang = services.sessionStorage.getLang() %}
-        {% set category = services.category.get(130, lang) %}
-      {% endif %}
-
-      {{ category.details.first.description | raw }}
-
-    </div>
-    <div class="newsletter">
-      {% if categoryNews is not defined %}
-        {% set categoryNews = services.category.get(409, lang) %}
-      {% endif %}
-
-      {{ categoryNews.details.first.description | raw }}
-
-    </div>
-
-    <p class="center">
-      *
-      {{ trans("Ceres::Template.itemInclVAT") }}
-      {{ trans("Ceres::Template.itemExclusive") }}
-      <a href="hermko/versandkosten" title="{{ trans(" ceres::template.itemShippingCosts") }}">{{ trans("Ceres::Template.itemShippingCosts") }}</a>
-    </p>
-  </div>
+        <p class="center">
+          *
+          {{ trans("Ceres::Template.itemInclVAT") }}
+          {{ trans("Ceres::Template.itemExclusive") }}
+          <a href="hermko/versandkosten" title="{{ trans(" ceres::template.itemShippingCosts") }}">{{ trans("Ceres::Template.itemShippingCosts") }}</a>
+        </p>
+      </div>
 {% else %}
-  {{ overrideHomepageContainer }}
+    {{ overrideHomepageContainer | raw }}
 {% endif %}
