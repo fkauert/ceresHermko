@@ -22,11 +22,11 @@
 
             {% set shippingCheckContent %}<!--
                 --><a href="/shippingCheck" target="_blank">
-                    <span>{{ trans("Ceres::Template.checkoutShippingCheck", {"hyphen": "&shy;"}) }}</span>
+                    <span>{{ trans("CeresHermko::Template.checkoutShippingCheck", {"hyphen": "&shy;"}) }}</span>
                 </a><!--
             -->{% endset %}
 
-            {{ trans("Ceres::Template.checkoutChooseOur", {"gtc": gtcContent, "cancellation": cancellationContent, "policy": policyContent, "shippingCheck": shippingCheckContent}) }}
+            {{ trans("CeresHermko::Template.checkoutChooseOur", {"gtc": gtcContent, "cancellation": cancellationContent, "policy": policyContent, "shippingCheck": shippingCheckContent}) }}
         {% endautoescape %}
     </label>
 </script>
