@@ -98,6 +98,14 @@
         {% set categoryStart  = services.category.get(411, lang) %}
       {% endif %}
 
+      {% if startArtikel is not defined %}
+        {% set startArtikel = services.category.get(412, lang) %}
+      {% endif %}
+
+
+      {{ startArtikel.details.first.description | raw }}
+
+<!--
       {% set homepageContainer6 = LayoutContainer.show("Ceres::Homepage.Container6") %}
       {% if categoryList1 is not empty or homepageContainer6 | trim is not empty %}
           <div class="topProdukte clearfix">
@@ -129,7 +137,7 @@
             <div class="neuheiten clearfix">
                 {% if homepageContainer9 | trim is empty %}
 
-                    <!-- crosssell start -->
+
                     <ul class="product-list grid">
                       <li class="first col-xs-12 col-sm-12 col-md-6 col-lg-3">
                         <div class="border">
@@ -151,7 +159,7 @@
             </div>
         {% endif %}
 
-
+-->
 
     <div class="SEO">
       {% if category is not defined %}
