@@ -76,9 +76,11 @@
 {% block PartialHead %}
 <script type="application/ld+json">{"@context": "http://schema.org","@type": "WebSite","url": "{{ webstoreConfig.domainSsl }}","potentialAction":{"@type": "SearchAction","target": "{{ webstoreConfig.domainSsl }}/search?query={search_term}","query-input": "required name=search_term"}}</script>
     {% if isSearch %}
-        <title>{{ trans("Ceres::Template.itemSearchResults") }} {{ searchString }} | {{ ceresConfig.header.companyName }}</title>
+        <title>{{ trans("Ceres::Template.itemSearchResults") }} {{ searchString }} | HERMKO.de</title>
     {% endif %}
     <meta name="title" content="{{ category.details[0].metaTitle }}">
     <meta name="description" content="{{ category.details[0].metaDescription }}">
-    <title>{{ category.details[0].metaTitle }}</title>
+    <title>{{ category.details[0].metaTitle }} | HERMKO.de</title>
+
+
 {% endblock %}
