@@ -66,20 +66,13 @@
         <div class="border">
           <h4>{{ trans("Ceres::Template.myAccountSettings") }}</h4>
           <div class="card m-b-3">
-            <account-settings template="#vue-account-settings" :user-data="{{ userObject }}">
-              <account-settings></div>
-            </div>
+            <account-settings template="#vue-account-settings" :user-data="{{ userObject }}"><account-settings>
           </div>
-
-          <div class="col-md-6 bank">
-            <div class="border">
-              <h4>{{ trans("Ceres::Template.myAccountBankDetails") }}</h4>
-              <bank-data-select template="#vue-bank-data-select" :user-bank-data="{{ userBankData }}" contact-id="{{ frontend.Account.AccountContactId }}"></bank-data-select>
-            </div>
           </div>
-        </div>
-        <!-- ./ACCOUNT SETTINGS AREA -->
+        </div>        
       </div>
+      <!-- ./ACCOUNT SETTINGS AREA -->
+    </div>
 
       {% set ordersPerPage = config("Ceres.my_account.orders_per_page") %}
       {% if not(ordersPerPage matches '/^\\d+$/') %}
