@@ -11,8 +11,6 @@ itemLoaderPresets.tagList,
 
 {% set itemTagList = tagList.documents %}
 
-<p class="hidden">{{ item | json_encode }}</p>
-
 <script type="x/template" id="vue-single-item">
   <div>
     <div class="single container-max page-content">
@@ -25,10 +23,10 @@ itemLoaderPresets.tagList,
         <!-- ITEM DETAIL -->
         <div class="col-md-6 single-rightside">
           <div class="border">
-            <h1 class="title"><span class="headline">Hermko ${ currentVariation.variation.model }</span><br/>${ currentVariation | itemName }</h1>
+            <h1 class="title" itemprop="name"><span class="headline">Hermko ${ currentVariation.variation.model }</span><br/>${ currentVariation | itemName }</h1>
             <p class="single-info">
               <span class="single-shortDesc" v-if="currentVariation.texts.shortDescription !== ''" v-html="currentVariation.texts.shortDescription"></span><br/>
-              <span class="articlenumber">Artikelnummer: ${ currentVariation.variation.model }</span>
+              <span class="articlenumber" itemprop="mpn">Artikelnummer: ${ currentVariation.variation.model }</span>
               <slot name="BeforePrice"></slot>
             </p>
             <hr>
@@ -69,7 +67,7 @@ itemLoaderPresets.tagList,
               </div>
             {% endif %}
 
-            <span class="price h1">
+            <span class="price h1" itemprop="price">
               <hr>
               <p ref="variationTotalPrice" :content="currentVariation.prices.default.price.value">
                 ${ variationTotalPrice | currency(currentVariation.prices.default.currency) }
