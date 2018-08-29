@@ -82,7 +82,7 @@
 
         <!-- ITEM DETAILS -->
         <div class="thumb-content">
-            <a href="{{ itemUrl }}" class="thumb-title small">
+            <a itemprop="name" href="{{ itemUrl }}" class="thumb-title small">
                 {{ item.data | itemName }}
             </a>
              <p class="shortDesc">{{ item.data.texts.shortDescription }}</p>
@@ -105,7 +105,7 @@
         </div>
         <!-- ./ITEM DETAILS  -->
     </div>
-    <div class="prices">
+    <div class="prices" itemprop="offers">
         {% if item.data.prices.rrp is defined and item.data.prices.rrp.price.value != 0 %}
             <div class="price-view-port">
                 <del class="crossprice">
@@ -114,7 +114,7 @@
             </div>
         {% endif %}
 
-        <div class="price">
+        <div class="price" itemprop="price">
             ab {{ item.data.prices.default.unitPrice.formatted }} *
         </div>
     </div>
