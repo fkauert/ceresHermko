@@ -8,6 +8,7 @@
 {{ component( "CeresHermko::Item.Components.SingleItem" ) }}
 {{ component( "Ceres::Item.Components.GraduatedPrices" ) }}
 {{ component( "CeresHermko::Basket.Components.AddToBasket" ) }}
+{{ component( "CeresHermko::ItemList.Components.CategoryItem" ) }}
 
 <single-item v-cloak template="#vue-single-item" :item-data="{{ item | json_encode }}" :variation-list-data="{{ variations | json_encode }}" :attribute-name-map="{{attributeNameMap | json_encode}}">
     <div slot="BeforePrice">{{ LayoutContainer.show("Ceres::SingleItem.BeforePrice", item.documents[0].data) }}</div>
