@@ -78,4 +78,7 @@
     {% if isSearch %}
         <title>{{ trans("Ceres::Template.itemSearchResults") }} {{ searchString }} | {{ ceresConfig.header.companyName }}</title>
     {% endif %}
+    <meta name="title" content="{{ category.details[0].metaTitle }}">
+    <meta name="description" content="{{ category.details[0].metaDescription }}">
+    <title>{{ category.details[0].metaTitle }}</title>
 {% endblock %}

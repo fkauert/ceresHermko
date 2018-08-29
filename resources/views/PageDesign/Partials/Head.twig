@@ -2,14 +2,50 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="title" content="{{ category.details[0].metaTitle }}">
-<meta name="description" content="{{ category.details[0].metaDescription }}">
-<title>{{ category.details[0].metaTitle }}</title>
 <script  src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://cdn02.plentymarkets.com/lywq02hc1uc5/frontend/hermko_ceres/js/werk38.js"></script>
 {% set lang = services.sessionStorage.getLang() %}
 {% set favicon = url ~ '/tpl/favicon_' ~ webstoreConfig.webstoreId ~ '.ico' %}
 <link rel="icon" type="img/ico" href="{{ favicon }}">
+
+<meta name="google-site-verification" content="OyY-EPYQoW1YeUopHZEUQYlY26yDsiWHL8Bm5ZQsEG8"/>
+		<meta name="google-site-verification" content="7MLgq2wMpfksfn449DlXpXygf1StuOyVHLhjkAAcpys" />
+		<meta name="google-site-verification" content="ZTysvqufP4Z3hyhtO8jE_yo__FbjzlZwA9XJCrF4u9k" />
+		<script>
+			var gaProperty = 'UA-32980941-1';
+			var disableStr = 'ga-disable-' + gaProperty;
+			if (document.cookie.indexOf(disableStr + '=true') > -1) { window[disableStr] = true;
+			}
+			function gaOptout() {
+			document.cookie = disableStr + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
+			window[disableStr] = true; }
+		</script>
+
+		<script type="text/javascript">
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-32980941-1']);
+		  _gaq.push(['_setDomainName', 'hermko.de']);
+		 _gaq.push (['_gat._anonymizeIp']);
+		  _gaq.push(['_trackPageview']);
+
+		  (function() {
+		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
+
+      <!-- Google Code for Remarketing-Tag -->
+		<!-- Remarketing tags may not be associated with personally identifiable information or placed on pages related to sensitive categories. For instructions on adding this tag and more information on the above requirements, read the setup guide: google.com/ads/remarketingsetup -->
+		<script type="text/javascript">
+			/* <![CDATA[ */
+			var google_conversion_id = 1003630262;
+			var google_conversion_label = "1xHuCIKM5wQQtt3I3gM";
+			var google_custom_params = window.google_tag_params;
+			var google_remarketing_only = true;
+			/* ]]> */
+		</script>
+		<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+		</script>
 
 {% set requestUrl = webstoreConfig.domainSsl ~ request.getRequestUri() %}
 {% set canonicalUrl = services.url.getCanonicalURL() %}
