@@ -75,7 +75,7 @@
                     <item-list template="#vue-item-list" :total-items-data="{{ itemCountTotal }}" :category-id="{{ category.id }}"></item-list>
                 </div>
             </div>
-                        {% if ceresConfig.pagination.position in ['top', 'top_bottom'] %}
+          {% if ceresConfig.pagination.position in ['top', 'top_bottom'] %}
             <div class="col-xs-12">
 	            <div class="list-controls m-b-3">
                     <pagination template="#vue-pagination"></pagination>
@@ -84,10 +84,6 @@
                     </noscript>
 	            </div>
 	        </div>
-          <p class="center">
-              * {{ trans("Ceres::Template.itemInclVAT") }} {{ trans("Ceres::Template.itemExclusive") }}
-              <a  href="hermko/versandkosten/" title="{{ trans("Ceres::Template.itemShippingCosts") }}">{{ trans("Ceres::Template.itemShippingCosts") }}</a>
-          </p>
 	        {% endif %}
 
         </div>
@@ -101,6 +97,10 @@
                 </div>
             </div>
         {% endif %}
+        <p class="center">
+            * {{ trans("Ceres::Template.itemInclVAT") }} {{ trans("Ceres::Template.itemExclusive") }}
+            <a  href="hermko/versandkosten/" title="{{ trans("Ceres::Template.itemShippingCosts") }}">{{ trans("Ceres::Template.itemShippingCosts") }}</a>
+        </p>
     </div>
 
 {% endblock %}
