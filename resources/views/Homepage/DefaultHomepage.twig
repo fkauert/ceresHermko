@@ -40,7 +40,7 @@
 
 <div class="row" id="slider">
   <div class="col-xs-12 col-lg-8 padding-0">
-    <div id="homeSlider" class="carousel slide" data-ride="carousel">
+    <div id="homeSlider" class="carousel slide" data-ride="carousel" data-interval="8000" data-transition="fade">
       <div class="carousel-inner">
         {% if categorySlider is not defined %}
           {% set categorySlider = services.category.get(410, lang) %}
