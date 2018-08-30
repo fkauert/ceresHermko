@@ -2,7 +2,7 @@
 
 {% set showDefaultHomepage = config("Ceres.default.homepage") %}
 {% set companyLogo  = config("Ceres.header.company_logo") %}
-{% set companyName  = config("Ceres.header.company_name") %}
+{% set companyName  = "HERMKO %}
 
 {% block PartialHead %}
     <meta name="description" content="{{ config("Ceres.meta."~metaLang~".description_home") }}">
@@ -18,7 +18,7 @@
         {"@context": "http://schema.org","@type": "WebSite","url": "{{ services.webstoreConfig.getWebstoreConfig().domainSsl }}","potentialAction":{"@type": "SearchAction","target": "{{ services.webstoreConfig.getWebstoreConfig().domainSsl }}/search?query={search_term}","query-input": "required name=search_term"}}
     </script>
 
-    <title>{{ config("Ceres.header.company_name") }}</title>
+    <title>HERMKO - Wäsche zum Verlieben</title>
 {% endblock %}
 
 {% block PageBody %}
