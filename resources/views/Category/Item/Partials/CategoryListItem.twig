@@ -1,5 +1,5 @@
 <!-- Insert markup for category list item here -->
-{{ component( "Ceres::Basket.Components.AddToBasket" ) }} 
+{{ component( "Ceres::Basket.Components.AddToBasket" ) }}
 
 {% import "Ceres::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
 
@@ -12,7 +12,7 @@
     {% set enableCarousel = ceresConfig.item.enableImageCarousel %}
 {% endif %}
 <div class="border catItem">
-<article class="cmp cmp-product-thumb cmp-product-thumb--grid">
+<article class="cmp cmp-product-thumb cmp-product-thumb--grid" itemtype="http://schema.org/Product">
     <div class="thumb-inner">
       <div data-toggle="tooltip" data-placement="top" title="" class="add-to-basket-lg-container hidden-md-down" data-original-title="Artikel anzeigen"><a href="{{ itemUrl }}"><i class="fa fa-arrow-right fa-lg mobile-icon-right"></i></a></div>
 
