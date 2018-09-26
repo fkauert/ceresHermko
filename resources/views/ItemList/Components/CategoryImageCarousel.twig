@@ -3,7 +3,7 @@
 <script type="x/template" id="vue-category-image-carousel">
     <a :id="'owl-carousel-' + _uid" v-if="$_enableCarousel" class="owl-carousel owl-theme" :href="itemUrl">
         <div v-for="(imageUrl, index) in imageUrls">
-            <item-lazy-img ref="itemLazyImage" template="#vue-item-lazy-img" v-if="index === 0 && !disableLazyLoad" :image-url="imageUrl.url" :alt="getAltText(imageUrl)" :title="titleText"></item-lazy-img>
+            <item-lazy-img itemprop="image" ref="itemLazyImage" template="#vue-item-lazy-img" v-if="index === 0 && !disableLazyLoad" :image-url="imageUrl.url" :alt="getAltText(imageUrl)" :title="titleText"></item-lazy-img>
             <img v-else-if="index !== 0 && !disableLazyLoad" class="img-fluid owl-lazy" :data-src="imageUrl.url" :alt="getAltText(imageUrl)" :title="titleText" itemprop="image">
             <img v-else class="img-fluid" :src="imageUrl.url" :alt="getAltText(imageUrl)" :title="getAltText(imageUrl)" itemprop="image">
         </div>
