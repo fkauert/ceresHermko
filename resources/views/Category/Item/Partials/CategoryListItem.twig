@@ -33,7 +33,7 @@
                     </category-image-carousel>
 
                     <noscript>
-                        <a href="{{ itemUrl }}">
+                        <a href="{{ itemUrl }}" title="{{ item.data | itemName }}">
                             <img class="img-fluid" src="{{ image.urlMiddle }}">
                         </a>
                     </noscript>
@@ -82,7 +82,7 @@
 
         <!-- ITEM DETAILS -->
         <div class="thumb-content">
-            <a itemprop="name" href="{{ itemUrl }}" class="thumb-title small">
+            <a itemprop="name" href="{{ itemUrl }}" class="thumb-title small" title="{{ item.data | itemName }}">
                 {{ item.data | itemName }}
             </a>
              <p class="shortDesc">{{ item.data.texts.shortDescription }}</p>
@@ -105,7 +105,7 @@
         </div>
         <!-- ./ITEM DETAILS  -->
     </div>
-    <div class="prices" itemprop="offers">
+    <div class="prices" itemprop="offers" itemtype="http://schema.org/Offer">
         {% if item.data.prices.rrp is defined and item.data.prices.rrp.price.value != 0 %}
             <div class="price-view-port">
                 <del class="crossprice">
@@ -113,8 +113,9 @@
                 </del>
             </div>
         {% endif %}
-
-        <div class="price" itemprop="price">
+        <meta itemprop="priceCurrency" content="EUR">
+				<meta itemprop="price" content="{{ item.data.prices.default.unitPrice.value }}">
+        <div class="price">
             ab {{ item.data.prices.default.unitPrice.formatted }} *
         </div>
     </div>
