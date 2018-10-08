@@ -34,7 +34,7 @@ itemLoaderPresets.tagList,
 
 
             <!-- Variation -->
-            <div class="variationSelectFields" v-if="variations.length > 0">
+            <div class="variationSelectFields" v-if="variations.length > 1">
             <hr>
               <variation-select template="#vue-variation-select" :attributes="attributeNameMap" :variations="variations" :preselect="currentVariation.variation.id" @is-valid-change="isVariationSelected = $event"></variation-select>
             </div>
