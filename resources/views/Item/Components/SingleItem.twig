@@ -4,7 +4,7 @@
 
 
 {% set tagList =
-services.itemLoader.loadForTemplate( 
+services.itemLoader.loadForTemplate(
 'Ceres::ItemList.ItemListView',
 itemLoaderPresets.tagList,
 {'tagIds': 2, 'items':3 }) %}
@@ -27,13 +27,15 @@ itemLoaderPresets.tagList,
             <p class="single-info">
               <span class="single-shortDesc" v-if="currentVariation.texts.shortDescription !== ''" v-html="currentVariation.texts.shortDescription"></span><br/>
               <span class="articlenumber" itemprop="mpn">Artikelnummer: ${ currentVariation.variation.model }</span>
+              <p>&nbsp;</p>
               <slot name="BeforePrice"></slot>
             </p>
-            <hr>
+
 
 
             <!-- Variation -->
             <div class="variationSelectFields" v-if="variations.length > 0">
+            <hr>
               <variation-select template="#vue-variation-select" :attributes="attributeNameMap" :variations="variations" :preselect="currentVariation.variation.id" @is-valid-change="isVariationSelected = $event"></variation-select>
             </div>
             <!-- /Variation -->
@@ -76,13 +78,13 @@ itemLoaderPresets.tagList,
               <span :content="currentVariation.prices.default.currency"></span>
             </span>
 
-            <div class="base-price text-muted m-y-1" v-if="currentVariation.unit && !(currentVariation.unit.unitOfMeasurement === 'C62' && currentVariation.unit.content === 1)">
+            <div class="base-price text-muted m-y-1 text-lg-center" v-if="currentVariation.unit && !(currentVariation.unit.unitOfMeasurement === 'C62' && currentVariation.unit.content === 1)">
               {{ trans("Ceres::Template.singleItemContent") }}
               <span>${ currentVariation.unit.content | numberFormat }</span>
               <span>${ currentVariation.unit.names.name }</span>
             </div>
 
-            <div v-if="currentVariation.variation.mayShowUnitPrice">
+            <div class="text-lg-center" v-if="currentVariation.variation.mayShowUnitPrice">
               {{ trans("Ceres::Template.singleItemUnitPrice") }}
               <span class="base-price-value">
                 ${ variationGraduatedPrice.basePrice }
