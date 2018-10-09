@@ -1,6 +1,6 @@
 {% macro get_children(category, currentScopeUrl, level, megaMenuLevels, maxItems) %}
     {% set megaMenuLevels = 3 %}
-    {% set maxItems = maxItems | default({"1": 30, "2": 5, "3": 5}) %}
+    {% set maxItems = maxItems | default({"1": 30, "2": 20, "3": 20}) %}
     {% import _self as childlist %}
     {% set counter = 0 %}
     <p class="hidden">{{ megaMenuLevels | json_encode }}</p>
@@ -29,7 +29,7 @@
 {% macro get_nav_bar(categories, currentScopeUrl, megaMenuLevels, maxItemsPerStage) %}
     {% import _self as navbar %}
     {% set counter = 0 %}
-    {% set megaMenuLevels = megaMenuLevels | default(1) %}
+    {% set megaMenuLevels = megaMenuLevels | default(3) %}
 
     {% for category in categories %}
 
