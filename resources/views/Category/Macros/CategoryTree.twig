@@ -3,8 +3,8 @@
     {% set maxItems = maxItems | default({"1": 30, "2": 5, "3": 5}) %}
     {% import _self as childlist %}
     {% set counter = 0 %}
-    <!--{{ megaMenuLevels | json_encode }}-->
-    <!--{{ maxItems | json_encode }}-->
+    <p class="hidden">{{ megaMenuLevels | json_encode }}</p>
+    <p class="hidden">{{ maxItems | json_encode }}</p>
     {% if level < megaMenuLevels %}
         {% for child in category.children if counter < maxItems[level] %}
             {% if (child.details | length > 0) %}
@@ -29,7 +29,7 @@
 {% macro get_nav_bar(categories, currentScopeUrl, megaMenuLevels, maxItemsPerStage) %}
     {% import _self as navbar %}
     {% set counter = 0 %}
-    {% set megaMenuLevels = 3) %}
+    {% set megaMenuLevels = megaMenuLevels | default(3) %}
 
     {% for category in categories %}
 
