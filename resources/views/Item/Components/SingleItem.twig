@@ -26,8 +26,7 @@ itemLoaderPresets.tagList,
             <h1 class="title" itemprop="name"><span class="headline">Hermko ${ currentVariation.variation.model }</span><br/>${ currentVariation | itemName }</h1>
             <p class="single-info">
               <span class="single-shortDesc" v-if="currentVariation.texts.shortDescription !== ''" v-html="currentVariation.texts.shortDescription"></span><br/>
-              <span class="articlenumber" itemprop="mpn">Artikelnummer: ${ currentVariation.variation.model }</span>
-              <p>&nbsp;</p>
+              <span class="articlenumber" itemprop="mpn">Artikelnummer: ${ currentVariation.variation.model }</span>              
               <slot name="BeforePrice"></slot>
             </p>
 
