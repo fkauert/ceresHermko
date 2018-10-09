@@ -1,8 +1,14 @@
-<!-- Insert markup for navigation list here -->
-{% import "CeresHermko::Category.Macros.CategoryTree" as Tree %}
+{% import "Ceres::Category.Macros.CategoryTree" as Tree %}
 
-{% set lang = services.sessionStorage.getLang() %}
-
-<ul class="mainmenu">
-    {{ Tree.get_nav_bar(categories, "") }}
+<ul class="mainmenu ">
+    {{ Tree.get_nav_bar(
+        categories,
+        "",
+        ceresConfig.header.megamenuLevels,
+        {
+            "1": 30,
+            "2": 10,
+            "3": 10
+        }
+    ) }}
 </ul>
