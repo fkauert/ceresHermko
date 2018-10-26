@@ -94,7 +94,16 @@ itemLoaderPresets.tagList,
 
             <div class="row m-y-1">
               <slot name="BeforeAddToBasket"></slot>
-              <add-to-basket template="#vue-add-to-basket" v-if="currentVariation.filter.isSalable" :item="$store.state.item.variation.documents[0].data" :show-quantity="true" :is-variation-selected="isVariationSelected"></add-to-basket>
+              {{ AddToBasket.printVueComponent(
+                  "currentVariation",
+                  false,
+                  true,
+                  {
+                      "v-if": "currentVariation.filter.isSalable",
+                      "missing-order-properties":"variationMissingProperties",
+                      "is-variation-selected": "isVariationSelected"
+                  }
+              ) }}
               <slot name="AfterAddToBasket"></slot>
             </div>
             <span v-if="currentVariation.variation.availability" :class="'availability tag availability_' + currentVariation.variation.availability.id">
@@ -125,7 +134,7 @@ itemLoaderPresets.tagList,
 
               <div class="item-links col-xs-12 col-sm-6">
                 {% if "wish-list" in enabledRoutes or "all" in enabledRoutes %}
-                  <add-to-wish-list template="#vue-add-to-wish-list" :variation-id="currentVariation.variation.id" :is-active="isInWishList"></add-to-wish-list>
+                  <add-to-wish-list :variation-id="currentVariation.variation.id"></add-to-wish-list>
                 {% endif %}
                 <a onclick="javascript:window.print();" data-toggle="tooltip" data-placement="top" data-original-title="Artikel Drucken">
                   <span class="fa fa-print" title="drucken"></span>
