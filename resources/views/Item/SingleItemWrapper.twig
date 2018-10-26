@@ -1,8 +1,9 @@
 {% extends getPartial('page-design') %}
 {% import "Ceres::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
+{% import "Ceres::PageDesign.Macros.ItemName" as ItemName %}
 
 {% block PartialHead %}
-  <title>{{ item.documents[0].data | itemName }}</title>  
+  <title>{{ item.documents[0].data | itemName }}</title>
     <meta name="description" content="{{ item.documents[0].data.texts.metaDescription }}">
     <meta name="keywords" content="{{ item.documents[0].data.texts.keywords | json_encode }}">
 
