@@ -1,3 +1,5 @@
+{% import "Ceres::Basket.Macros.AddToBasket" as AddToBasket %}
+
 {% set itemData = config("Ceres.item.data") | split(', ') %}
 {% set enabledRoutes = config("IO.routing.enabled_routes") | split(', ') %}
 {% set shippingCat = config("Ceres.global.shippingCostsCategoryId") %}
@@ -17,7 +19,7 @@ itemLoaderPresets.tagList,
       <div class="row m-t-3">
         <div class="col-md-6 single-leftside">
             <p class="title visible-sm">${ currentVariation | itemName }</p>
-            <item-image-carousel image-url-accessor="url" template="#vue-item-image-carousel"></item-image-carousel>
+            <slot name="ImageCarousel"></slot>
         </div>
 
         <!-- ITEM DETAIL -->
@@ -35,7 +37,7 @@ itemLoaderPresets.tagList,
             <!-- Variation -->
             <div class="variationSelectFields" v-if="variations.length > 0">
             <hr>
-              <variation-select template="#vue-variation-select" :attributes="attributeNameMap" :variations="variations" :preselect="currentVariation.variation.id" @is-valid-change="isVariationSelected = $event"></variation-select>
+            <variation-select template="#vue-variation-select" :attributes="attributeNameMap" :variation-units="variationUnits" :variations="variations" :preselect="currentVariation.variation.id" :unitPreselect="currentVariation.variation.unitCombinationId" @is-valid-change="isVariationSelected = $event"></variation-select>
             </div>
             <!-- /Variation -->
 
