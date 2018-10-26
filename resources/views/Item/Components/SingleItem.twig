@@ -33,23 +33,12 @@
             <!-- /Variation -->
 
 
-            <!-- Verfügbarkeits Mail -->
+            <!-- Verfügbarkeits Hinweis -->
 
             <div data-plenty="stockHinweis" v-if="currentVariation.item.stockType == 3">
                 <p>Das gewünschte Produkt wird leider nicht mehr hergestellt.</p>
             </div>
-
-            <div data-plenty="stocknotification" v-if="currentVariation.variation.availability.id > 2">
-
-                <h3>Wir melden uns bei dir,<br>wenn der Artikel wieder verfügbar ist!</h3>
-                <input type="text" placeholder="deine E-Mail" class="emailNotification PlentyText"/>
-                <button type="button" data-href="positive_stock_notification/" data-loading-text="Bitte warten..." class="btn btn-primary btnNotification" autocomplete="off">
-                    Absenden
-                  </button>
-              <div class="responseNotification margin-bottom-1 collapse"></div>
-            </div>
-
-            <!-- /Verfügbarkeits Mail -->
+            <!-- /Verfügbarkeits Hinweis -->
 
             <graduated-prices template="#vue-graduated-prices"></graduated-prices>
 
