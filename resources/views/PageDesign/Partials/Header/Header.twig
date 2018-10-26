@@ -1,4 +1,3 @@
-<!-- Insert markup for header here -->
 {% import "Ceres::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
 
 {{ component( "CeresHermko::Customer.Components.UserLoginHandler" ) }}
@@ -21,7 +20,7 @@
 {% set companyName  = config("Ceres.header.company_name") %}
 {% set useMegaMenu  = config("Ceres.header.megamenu_levels") > 1 %}
 
-<header class="top-bar">
+<header id="page-header" class="top-bar">
 	<div class="additionalLinks">
 		<ul>
 			<li><a href="https://www.hermko.de/content/fabrikverkauf/" title="zum Fabrikverkauf">Fabrikverkauf</a></li>
