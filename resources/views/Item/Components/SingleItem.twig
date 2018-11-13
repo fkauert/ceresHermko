@@ -77,14 +77,15 @@
             <div class="row m-y-1">
               <slot name="BeforeAddToBasket"></slot>
               {{ AddToBasket.printVueComponent(
-                            "currentVariation",
-                            false,
-                            true,
-                            {
-                                ":missing-order-properties":"variationMissingProperties",
-                                ":is-variation-selected": "isVariationSelected && currentVariation.filter.isSalable"
-                            }
-                        ) }}
+                  "currentVariation",
+                  false,
+                  true,
+                  {
+                      "v-if": "currentVariation.filter.isSalable",
+                      "missing-order-properties":"variationMissingProperties",
+                      "is-variation-selected": "isVariationSelected"
+                  }
+              ) }}
               <slot name="AfterAddToBasket"></slot>
             </div>
             <span v-if="currentVariation.variation.availability" :class="'availability tag availability_' + currentVariation.variation.availability.id">
