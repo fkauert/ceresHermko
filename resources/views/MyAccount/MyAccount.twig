@@ -11,7 +11,7 @@
 
   {{ component( "Ceres::Customer.Components.AddressSelect.AddressSelect" ) }}
   {{ component( "Ceres::MyAccount.Components.AccountSettings" ) }}
-  {{ component( "Ceres::MyAccount.Components.History" ) }}
+  {{ component( "CeresHermko::MyAccount.Components.History" ) }}
   {{ component( "Ceres::MyAccount.Components.BankDataSelect" ) }}
 
   {% set userObject = services.customer.getContact() %}
@@ -69,7 +69,7 @@
             <account-settings template="#vue-account-settings" :user-data="{{ userObject }}"><account-settings>
           </div>
           </div>
-        </div>        
+        </div>
       </div>
       <!-- ./ACCOUNT SETTINGS AREA -->
     </div>
