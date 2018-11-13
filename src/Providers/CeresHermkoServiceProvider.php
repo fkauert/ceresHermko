@@ -144,6 +144,12 @@ class CeresHermkoServiceProvider extends ServiceProvider
             }, self::PRIORITY);
         }
 
+        // Override order return page
+        $dispatcher->listen('IO.tpl.order.return.confirmation', function (TemplateContainer $container) {
+          $container->setTemplate('CeresHermko::OrderReturn.OrderReturnConfirmation');
+          return false;
+        });
+
         // Override login page
         if (in_array("login", $enabledOverrides) || in_array("all", $enabledOverrides))
         {
