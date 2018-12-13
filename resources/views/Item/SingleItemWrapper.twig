@@ -6,7 +6,7 @@
   <title>{{ ItemName.get(item.documents[0].data | itemName, item.documents[0].data.variation.bundleType) }} | {{ trans("Ceres::Template.headerCompanyName") }}</title>
   <meta name="description" content="{{ item.documents[0].data.texts.metaDescription }}">
    <meta name="keywords" content="{{ item.documents[0].data.texts.keywords }}">
-
+   <meta name="twitter:image" content="{{  item.documents[0].data.images.all[0].urlMiddle }}" />
    <meta property="og:title" content="{{ ItemName.get(item.documents[0].data | itemName, item.documents[0].data.variation.bundleType) }}" />
    <meta property="og:type" content="article" />
    <meta property="og:url" content="{{ webstoreConfig.domainSsl }}{{ item.documents[0].data | itemURL }}" />
