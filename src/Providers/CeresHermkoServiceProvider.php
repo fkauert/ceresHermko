@@ -33,12 +33,6 @@ class CeresHermkoServiceProvider extends ServiceProvider
 
         $enabledOverrides = explode(", ", $config->get("CeresHermko.templates.override"));
 
-
-        $dispatcher->listen('IO.Resources.Import', function ( ResourceContainer $container ) {
-          // Hier wir das zusätzliche Script importtiert
-          $container->addScriptTemplate('CeresHermko::Newsletter2Go.NewsletterScript');
-      }, self::PRIORITY);
-
         $dispatcher->listen('IO.ctx.item', function (TemplateContainer $templateContainer, $templateData = [])
           {
               $templateContainer->setContext( MyContext::class);
