@@ -208,16 +208,14 @@
       {{ category.details.first.description | raw }}
 
     </div>
-    <div class="newsletter">
+    <div class="newsletter" id="n2g_script">
       <!--{% if categoryNews is not defined %}
         {% set categoryNews = services.category.get(409, lang) %}
       {% endif %}
 
       {{ categoryNews.details.first.description2 | raw }}-->
 
-      {% for scriptTemplate in get_additional_scripts() %}
-        {% include scriptTemplate.path ignore missing with scriptTemplate.params %}
-    {% endfor %}
+
 
     </div>
 
