@@ -94,7 +94,7 @@
               </span>
             </span>
 
-            <span v-if="currentVariation.stock.net == 0" class="unavailable">
+            <span v-if="currentVariation.stock.net == 0" :class="'unavailable tag availability_' + currentVariation.variation.availability.id">
               <span> Nicht verfügbar</span>
             </span>
 
