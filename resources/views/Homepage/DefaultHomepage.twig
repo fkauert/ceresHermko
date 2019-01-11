@@ -105,7 +105,7 @@
       {% endif %}
 
 
-      <div class="staticArt">
+      <div class="startArt">
         <div class="col-xs-12 col-sm-6 col-md-4 first">
     		<div class="border">
     			<h2>Top Artikel</h2>
@@ -115,13 +115,11 @@
       </div>
       {% set list = services.itemList.getItemList( 'tag_list', 3, null, 3).documents %}
           {% for items in list %}
-              <div class="col-xs-12 col-sm-6 startArt">
-                  {% include "CeresHermko::Category.Item.Partials.CategoryListItem" with { 'item': items } %}
-              </div>
+            {% include "CeresHermko::Category.Item.Partials.CategoryListItem" with { 'item': items } %}
           {% endfor %}
     </div>
 
-    <div class="staticArt">
+    <div class="startArt">
       <div class="col-xs-12 col-sm-6 col-md-4 first">
       <div class="border">
         <h2>Neue Produkte</h2>
