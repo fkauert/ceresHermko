@@ -9,6 +9,7 @@ use Plenty\Plugin\ServiceProvider;
 use Plenty\Plugin\Events\Dispatcher;
 use Plenty\Plugin\Templates\Twig;
 use IO\Helper\TemplateContainer;
+use IO\Helper\ResourceContainer;
 use IO\Extensions\Functions\Partial;
 use Plenty\Plugin\ConfigRepository;
 use CeresHermko\Contexts\MyContext;
@@ -32,6 +33,11 @@ class CeresHermkoServiceProvider extends ServiceProvider
 
         $enabledOverrides = explode(", ", $config->get("CeresHermko.templates.override"));
 
+
+        $dispatcher->listen('IO.Resources.Import', function ( ResourceContainer $container ) {
+          // Hier wir das zusätzliche Script importtiert
+          $container->addScriptTemplate('CeresHermko::Newsletter2Go.NewsletterScript');
+      }, self::PRIORITY);
 
         $dispatcher->listen('IO.ctx.item', function (TemplateContainer $templateContainer, $templateData = [])
           {
