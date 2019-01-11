@@ -105,8 +105,8 @@
       {% endif %}
 
 
-      <div class="startArtRow">
-        <div class="col-xs-12 col-sm-6 col-md-4 first">
+      <div class="startArt row">
+        <div class="col-xs-12 col-sm-6 col-md-3 first">
     		<div class="border">
     			<h2>Top Artikel</h2>
     			<p>Durchstöbern Sie die beliebtesten HERMKO Produkte!<br>
@@ -115,14 +115,14 @@
       </div>
       {% set list = services.itemList.getItemList( 'tag_list', 3, null, 3).documents %}
           {% for items in list %}
-              <div class="col-xs-12 col-sm-6 startArt">
+              <div class="col-xs-12 col-sm-6 col-md-3">
                   {% include "CeresHermko::Category.Item.Partials.CategoryListItem" with { 'item': items } %}
               </div>
           {% endfor %}
     </div>
 
-    <div class="startArtRow">
-      <div class="col-xs-12 col-sm-6 col-md-4 first">
+    <div class="startArt row">
+      <div class="col-xs-12 col-sm-6 col-md-3 first">
       <div class="border">
         <h2>Neue Produkte</h2>
         <p>Erfahren Sie als Erstes welche neuen Produkte unser vielfätiges Sortiment zu bieten hat.</p>
@@ -130,7 +130,7 @@
     </div>
     {% set list2 = services.itemList.getItemList( 'tag_list', 4, null, 3).documents %}
         {% for items2 in list2 %}
-            <div class="col-xs-12 col-sm-6 startArt">
+            <div class="col-xs-12 col-sm-6 col-md-3">
                 {% include "CeresHermko::Category.Item.Partials.CategoryListItem" with { 'item': items2 } %}
             </div>
         {% endfor %}
