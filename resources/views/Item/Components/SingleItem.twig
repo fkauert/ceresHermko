@@ -88,15 +88,13 @@
               <slot name="AfterAddToBasket"></slot>
             </div>
 
-            <span v-if="currentVariation.variation.availability && currentVariation.stock.net > 0" :class="'availability tag availability_' + currentVariation.variation.availability.id">
+            <span v-if="currentVariation.variation.availability" :class="'availability tag availability_' + currentVariation.variation.availability.id">
               <span>
                 ${ currentVariation.variation.availability.names.name }
               </span>
             </span>
 
-            <span v-if="currentVariation.stock.net == 0" :class="'unavailable tag availability_' + currentVariation.variation.availability.id">
-              <span> Nicht verfügbar</span>
-            </span>
+
 
             <hr>
 
