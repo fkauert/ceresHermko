@@ -31,6 +31,14 @@
     {% set categoryList1 = paginatedCategoryList1.documents %}
     {% set categoryList2 = paginatedCategoryList2.documents %}
 
+    {% if category is not defined %}
+      {% set categoryStart  = services.category.get(411, lang) %}
+    {% endif %}
+
+    {% if startArtikel is not defined %}
+      {% set startArtikel = services.category.get(412, lang) %}
+    {% endif %}
+
 
   {{ component( "Ceres::ItemList.Components.ItemList") }}
   {{ component( "Ceres::ItemList.Components.CategoryImageCarousel") }}
@@ -96,108 +104,12 @@
 
       {% set homepageContainer6 = LayoutContainer.show("Ceres::Homepage.Container6") %}
 
-      {% if category is not defined %}
-        {% set categoryStart  = services.category.get(411, lang) %}
-      {% endif %}
-
-      {% if startArtikel is not defined %}
-        {% set startArtikel = services.category.get(412, lang) %}
-      {% endif %}
-
 
       {{ startArtikel.details.first.description | raw }}
 
       {{ startArtikel.details.first.description2 | raw }}
 
-      <!--
-      <div class="startArt row">
-        <div class="col-xs-12 col-sm-6 col-md-3 first">
-    		<div class="border">
-    			<h2>Top Artikel</h2>
-    			<p>Durchstöbern Sie die beliebtesten HERMKO Produkte!<br>
-    Sämtliche Produkte werden aus hochwertigen und langlebigen Stoffen hergestellt, denn Komfort und Qualität stehen bei uns an oberster Stelle. </p>
-    		</div>
-      </div>
-      {% set list = services.itemList.getItemList( 'tag_list', 3, null, 3).documents %}
-          {% for items in list %}
-              <div class="col-xs-12 col-sm-6 col-md-3">
-                  {% include "CeresHermko::Category.Item.Partials.CategoryListItem" with { 'item': items } %}
-              </div>
-          {% endfor %}
-    </div>
 
-    <div class="startArt row">
-      <div class="col-xs-12 col-sm-6 col-md-3 first">
-      <div class="border">
-        <h2>Neue Produkte</h2>
-        <p>Erfahren Sie als Erstes welche neuen Produkte unser vielfätiges Sortiment zu bieten hat.</p>
-      </div>
-    </div>
-    {% set list2 = services.itemList.getItemList( 'tag_list', 4, null, 3).documents %}
-        {% for items2 in list2 %}
-            <div class="col-xs-12 col-sm-6 col-md-3">
-                {% include "CeresHermko::Category.Item.Partials.CategoryListItem" with { 'item': items2 } %}
-            </div>
-        {% endfor %}
-  </div>
-
-      -->
-
-<!--
-      {% set homepageContainer6 = LayoutContainer.show("Ceres::Homepage.Container6") %}
-      {% if categoryList1 is not empty or homepageContainer6 | trim is not empty %}
-          <div class="topProdukte clearfix">
-              {% if homepageContainer6 | trim is empty %}
-
-                  <ul class="product-list  grid">
-                    <li class="first col-xs-12 col-sm-12 col-md-6 col-lg-3">
-                      <div class="border">
-                        <h2>Top Produkte</h2>
-                        <div class="category-description">
-                            {{ categoryStart.details.first.description | raw }}
-                        </div>
-                      </div>
-                    </li>
-                      {% for item in categoryList1 %}
-                          <li class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
-                              {% include "Ceres::Category.Item.Partials.CategoryListItem" with { 'item': item } %}
-                          </li>
-                      {% endfor %}
-                  </ul>
-              {% else %}
-                  {{ homepageContainer6 }}
-              {% endif %}
-          </div>
-      {% endif %}
-
-        {% set homepageContainer9 = LayoutContainer.show("Ceres::Homepage.Container9") %}
-        {% if categoryList2 is not empty or homepageContainer9 | trim is not empty %}
-            <div class="neuheiten clearfix">
-                {% if homepageContainer9 | trim is empty %}
-
-
-                    <ul class="product-list grid">
-                      <li class="first col-xs-12 col-sm-12 col-md-6 col-lg-3">
-                        <div class="border">
-                          <h2>Neue Produkte</h2>
-                          <div class="category-description">
-                              {{ categoryStart.details.first.description2 | raw }}
-                          </div>
-                        </div>
-                      </li>
-                        {% for item in categoryList2 %}
-                              <li class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
-                                {% include "Ceres::Category.Item.Partials.CategoryListItem" with { 'item': item } %}
-                            </li>
-                        {% endfor %}
-                    </ul>
-                {% else %}
-                    {{ homepageContainer9 }}
-                {% endif %}
-            </div>
-        {% endif %}
-
--->
 
     <div class="SEO">
       {% if category is not defined %}
